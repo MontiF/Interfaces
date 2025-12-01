@@ -16,7 +16,7 @@ public class SimpleEmail {
 	   Use Authentication: Yes
 	   Port for SSL: 465
 	 */
-	public static void main(String[] args, String toEmail) {
+	/*public static void main(String[] args, String toEmail) {
 		
 		final String fromEmail = "miguel.monteagudo.dosa@gmail.com"; //EMAIL DE SALIDA
 		final String password = "oujt qvgn momv kxpt"; //CONTRASEÑA DEL EMAIL DE SALIDA (aplicaciones de 3ros) Contraseñas de aplicación -- Verificación en 2 pasos
@@ -45,7 +45,7 @@ public class SimpleEmail {
 		 * subject
 		 * body 
 		 */		
-	    EmailUtil.sendEmail(session, toEmail,"ASUNTO", "MENSAJE/CUERPO");
-	}
+	   // EmailUtil.sendEmail(session, toEmail,"ASUNTO", "MENSAJE/CUERPO");
+	//}
 }
 

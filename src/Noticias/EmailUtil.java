@@ -16,7 +16,7 @@ public class EmailUtil {
 	 * @param subject
 	 * @param body
 	 */
-	public static void sendEmail(Session session, String toEmail, String subject, String body){
+	/*public static void sendEmail(Session session, String toEmail, String subject, String body){
 		try{
 	      MimeMessage msg = new MimeMessage(session);
 	      //Configurar Cabeceras
@@ -35,5 +35,5 @@ public class EmailUtil {
 	    catch (Exception e) {
 	      e.printStackTrace();
 	    }
-	}
+	}*/
 }
