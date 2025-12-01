@@ -15,7 +15,7 @@ public class GestionUsuarios {
 private static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();	
 	
 	public static void comprobarArchivoUsuarios(){
-		File usuariosTXT = new File("usuarios.txt");
+		File usuariosTXT = new File("datos/usuarios.txt");
 			if(!usuariosTXT.exists()) {
 				try {
 					usuariosTXT.createNewFile();
@@ -65,9 +65,17 @@ private static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		}
 		return false;
 	}
+	public static boolean esAdmin(String usuario) {
+		for (Usuario u : listaUsuarios) {
+	        if (u.getNombreUsuario().equals(usuario)) {
+	            return u.getAdmin();
+	        }
+	    }
+			return false;
+	}
 	
 	public static void inicializarUsuarios(){
-		try (FileInputStream ficheroEntrada = new FileInputStream("usuarios.txt");
+		try (FileInputStream ficheroEntrada = new FileInputStream("datos/usuarios.txt");
 				ObjectInputStream entrada = new ObjectInputStream(ficheroEntrada)) {
 
 		        	listaUsuarios = (ArrayList<Usuario>) entrada.readObject();
@@ -76,6 +84,24 @@ private static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		} catch (ClassNotFoundException e) {
 			System.err.println("Error: " + e.getMessage());
 		}
+	}
+	
+	public static String obtenerCorreo(String nombreUsuario) {
+		for (Usuario u : listaUsuarios) {
+	        if (u.getNombreUsuario().equals(nombreUsuario)) {
+	            return u.getCorreo();
+	        }
+	    }
+		return null;
+	}
+	
+	public static String obtenerPassword(String nombreUsuario) {
+		for (Usuario u : listaUsuarios) {
+	        if (u.getNombreUsuario().equals(nombreUsuario)) {
+	            return u.getPassword();
+	        }
+	    }
+		return null;
 	}
 }
 
