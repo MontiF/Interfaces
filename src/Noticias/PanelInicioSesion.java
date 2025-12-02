@@ -112,7 +112,7 @@ public class PanelInicioSesion extends JPanel {
         errorUsuarioField = new JLabel("Usuario o contraseña incorrecta");
         errorUsuarioField.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         errorUsuarioField.setBounds(0, 240, 400, 20);
-        errorUsuarioField.setForeground(new Color(229, 62, 62)); // Rojo suave
+        errorUsuarioField.setForeground(new Color(229, 62, 62));
         errorUsuarioField.setHorizontalAlignment(SwingConstants.CENTER);
         errorUsuarioField.setVisible(false);
         cardPanel.add(errorUsuarioField);
@@ -134,10 +134,13 @@ public class PanelInicioSesion extends JPanel {
                 String password = new String(passwordField.getPassword());
                 
                 if(GestionUsuarios.comprobarUsuarioYContraseña(usuario, password)) {
-                    if(GestionUsuarios.esAdmin(usuario)) {
-                        mainFrame.mostrarPanelAdmin();
+                	usuarioField.setText("");
+                	passwordField.setText("");
+                    Usuario usuarioIniciado = GestionUsuarios.obtenerUsuarioCompleto(usuario);
+                	if(usuarioIniciado.getAdmin()) {
+                        mainFrame.mostrarPanelAdmin(usuarioIniciado);
                     } else {
-                        mainFrame.mostrarPanelUsuario();
+                        mainFrame.mostrarPanelUsuario(usuarioIniciado);
                     }
                 } else {
                     errorUsuarioField.setVisible(true);

@@ -1,10 +1,5 @@
 package Noticias;
 
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -14,10 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-public class PanelInicioAdmin extends JPanel{
+public class PanelGestionUsuario extends JPanel{
 	private Usuario usuarioActual;
     
     private JPanel headerPanel;
@@ -30,18 +28,17 @@ public class PanelInicioAdmin extends JPanel{
     private JButton botonCerrarSesion;
     private JTextArea textoAcercaDe;
     private JSeparator separador;
-    
-    private JButton botonConfiguracionUsuario;
-    private JButton botonVerNoticias;
-    private JButton botonHoraAutomatica;
+    private JButton botonAgregarUsuario;
+    private JButton botonBorrarUsuario;
 
     private Color colorFondo = new Color(237, 242, 247);
     private Color colorTextoOscuro = new Color(45, 55, 72);
     private Color colorAzulAccion = new Color(66, 153, 225);
     private JButton botonAcercaDe;
 	
-	public PanelInicioAdmin(Pantalla mainFrame) {
-        setLayout(null);
+	
+	public PanelGestionUsuario(Pantalla mainFrame) {
+		setLayout(null);
         setBackground(colorFondo);
         setSize(700, 600);
         
@@ -53,10 +50,10 @@ public class PanelInicioAdmin extends JPanel{
         add(headerPanel);
         
         // Titulo
-        labelTitulo = new JLabel("Panel de Administración");
+        labelTitulo = new JLabel("Panel de Gestion de Usuarios");
         labelTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
         labelTitulo.setForeground(colorTextoOscuro);
-        labelTitulo.setBounds(30, 20, 300, 40);
+        labelTitulo.setBounds(30, 20, 400, 40);
         headerPanel.add(labelTitulo);
 
         // Rol
@@ -169,52 +166,43 @@ public class PanelInicioAdmin extends JPanel{
             }
         });
         
-        // Configurar Usuario
-        botonConfiguracionUsuario = new JButton("Configurar Usuarios");
-        botonConfiguracionUsuario.setBounds(70, 260, 160, 120);
-        botonConfiguracionUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonConfiguracionUsuario.setForeground(new Color(45, 55, 72));
-        botonConfiguracionUsuario.setBackground(Color.WHITE);
-        botonConfiguracionUsuario.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonConfiguracionUsuario.setFocusPainted(false);
-        botonConfiguracionUsuario.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonConfiguracionUsuario);
+        botonAgregarUsuario = new JButton("Crear Usuario");
+        botonAgregarUsuario.setBounds(70, 260, 160, 120);
+        botonAgregarUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        botonAgregarUsuario.setForeground(new Color(45, 55, 72));
+        botonAgregarUsuario.setBackground(Color.WHITE);
+        botonAgregarUsuario.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+        botonAgregarUsuario.setFocusPainted(false);
+        botonAgregarUsuario.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        add(botonAgregarUsuario);
         
-        botonConfiguracionUsuario.addActionListener(new ActionListener() {
+        botonAgregarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               mainFrame.mostrarGestionUsuarios(usuarioActual);
+               //Funcion agregar usuario
             }
         });
-
-
-        // Ver noticias 
-        botonVerNoticias = new JButton("Ver Noticias");
-        botonVerNoticias.setBounds(270, 260, 160, 120); 
-        botonVerNoticias.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonVerNoticias.setForeground(new Color(45, 55, 72));
-        botonVerNoticias.setBackground(Color.WHITE);
-        botonVerNoticias.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonVerNoticias.setFocusPainted(false);
-        botonVerNoticias.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        add(botonVerNoticias);
-
-
-        // Hora Automatica
-        botonHoraAutomatica = new JButton("Cambiar Hora");
-        botonHoraAutomatica.setBounds(470, 260, 160, 120);
-        botonHoraAutomatica.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonHoraAutomatica.setForeground(new Color(45, 55, 72));
-        botonHoraAutomatica.setBackground(Color.WHITE);
-        botonHoraAutomatica.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonHoraAutomatica.setFocusPainted(false);
-        botonHoraAutomatica.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        add(botonHoraAutomatica);
         
-    }
+     // Hora Automatica
+        botonBorrarUsuario = new JButton("Borrar Usuario");
+        botonBorrarUsuario.setBounds(470, 260, 160, 120);
+        botonBorrarUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        botonBorrarUsuario.setForeground(new Color(45, 55, 72));
+        botonBorrarUsuario.setBackground(Color.WHITE);
+        botonBorrarUsuario.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+        botonBorrarUsuario.setFocusPainted(false);
+        botonBorrarUsuario.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
+        add(botonBorrarUsuario);
+        botonBorrarUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	GestionUsuarios.borrarUsuarios(usuarioActual);
+            }
+        });
+        
+	}
+	
 	public void setUsuario(Usuario usuario) {
 		this.usuarioActual = usuario;
 		
