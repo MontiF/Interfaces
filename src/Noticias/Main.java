@@ -42,7 +42,7 @@ public class Main {
 			            //SEGUNDO 4: Comprobar todo
 			            cargando.actualizarProgreso(80, "Comprobando archivo de usuarios...");
 			            
-			            boolean usuariosOk = GestionUsuarios.comprobarArchivoUsuarios();
+			            boolean usuariosOk = GestionUsuarios.inicializarUsuarios();
 			            
 			            Thread.sleep(1000);
 

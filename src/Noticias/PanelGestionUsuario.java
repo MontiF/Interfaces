@@ -166,6 +166,7 @@ public class PanelGestionUsuario extends JPanel{
             }
         });
         
+     // Agregar usuario
         botonAgregarUsuario = new JButton("Crear Usuario");
         botonAgregarUsuario.setBounds(70, 260, 160, 120);
         botonAgregarUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -179,11 +180,11 @@ public class PanelGestionUsuario extends JPanel{
         botonAgregarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //Funcion agregar usuario
+              GestionUsuarios.agregarUsuarios();
             }
         });
         
-     // Hora Automatica
+     // Borrar usuario
         botonBorrarUsuario = new JButton("Borrar Usuario");
         botonBorrarUsuario.setBounds(470, 260, 160, 120);
         botonBorrarUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
