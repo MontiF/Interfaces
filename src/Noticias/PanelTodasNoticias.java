@@ -15,316 +15,306 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-public class PanelTodasNoticias extends JPanel{
+public class PanelTodasNoticias extends JPanel {
 	private Usuario usuarioActual;
-	
-	private JPanel headerPanel;
-    private JLabel labelTitulo;
-    private JButton botonPerfil;
-    private JLabel labelUsuario;
-    private JLabel labelRol;
-    private ImageIcon imagenPerfil;
-    private JPanel panelSalirYAcerca;
-    private JButton botonCerrarSesion;
-    private JTextArea textoAcercaDe;
-    private JSeparator separador;
-    
-    private JButton botonEnviarNoticias;
-    private JButton botonEconomia;
-    private JButton botonDeportes;
-    private JButton botonNacional;
-    private JButton botonInternacional;
-    private JButton botonVideojuegos;
-    private JButton botonPolitica;
-    
-    private JButton botonVolver;
-    
 
-    private Color colorFondo = new Color(237, 242, 247);
-    private Color colorTextoOscuro = new Color(45, 55, 72);
-    private Color colorAzulAccion = new Color(66, 153, 225);
-    private JButton botonAcercaDe;
-    
+	private JPanel headerPanel;
+	private JLabel labelTitulo;
+	private JButton botonPerfil;
+	private JLabel labelUsuario;
+	private JLabel labelRol;
+	private ImageIcon imagenPerfil;
+	private JPanel panelSalirYAcerca;
+	private JButton botonCerrarSesion;
+	private JTextArea textoAcercaDe;
+	private JSeparator separador;
+
+	private JButton botonEnviarNoticias;
+	private JButton botonEconomia;
+	private JButton botonDeportes;
+	private JButton botonNacional;
+	private JButton botonInternacional;
+	private JButton botonVideojuegos;
+	private JButton botonPolitica;
+
+	private JButton botonVolver;
+
+	private Color colorFondo = new Color(237, 242, 247);
+	private Color colorTextoOscuro = new Color(45, 55, 72);
+	private Color colorAzulAccion = new Color(66, 153, 225);
+	private JButton botonAcercaDe;
+
 	public PanelTodasNoticias(Pantalla mainFrame) {
 		setLayout(null);
-        setBackground(colorFondo);
-        setSize(700, 600);
-        
-        headerPanel = new JPanel();
-        headerPanel.setLayout(null);
-        headerPanel.setBackground(Color.WHITE);
-        headerPanel.setBounds(0, 0, 700, 80);
-        headerPanel.setBorder(new LineBorder(new Color(220, 220, 220), 1)); 
-        add(headerPanel);
-        
-        // Titulo
-        labelTitulo = new JLabel("Panel de Noticias");
-        labelTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
-        labelTitulo.setForeground(colorTextoOscuro);
-        labelTitulo.setBounds(30, 20, 300, 40);
-        headerPanel.add(labelTitulo);
+		setBackground(colorFondo);
+		setSize(700, 600);
 
-        // Rol
-        labelRol = new JLabel("Administrador");
-        labelRol.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        labelRol.setForeground(colorAzulAccion);
-        labelRol.setHorizontalAlignment(SwingConstants.RIGHT);
-        labelRol.setBounds(480, 20, 120, 20);
-        headerPanel.add(labelRol);
+		headerPanel = new JPanel();
+		headerPanel.setLayout(null);
+		headerPanel.setBackground(Color.WHITE);
+		headerPanel.setBounds(0, 0, 700, 80);
+		headerPanel.setBorder(new LineBorder(new Color(220, 220, 220), 1));
+		add(headerPanel);
 
-        // Nombre Usuario
-        labelUsuario = new JLabel("Usuario");
-        labelUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        labelUsuario.setForeground(Color.GRAY);
-        labelUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
-        labelUsuario.setBounds(430, 40, 170, 20);
-        headerPanel.add(labelUsuario);
-        
-        // Botón de foto de perfil, para cerrar sesión
-        
-        panelSalirYAcerca = new JPanel();
-        panelSalirYAcerca.setBounds(510, 82, 160, 75); 
-        panelSalirYAcerca.setLayout(null);
-        panelSalirYAcerca.setBackground(Color.WHITE);
-        panelSalirYAcerca.setBorder(new LineBorder(new Color(200, 200, 200), 1));
-        add(panelSalirYAcerca);
-        panelSalirYAcerca.setVisible(false);
+		// Titulo
+		labelTitulo = new JLabel("Panel de Noticias");
+		labelTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		labelTitulo.setForeground(colorTextoOscuro);
+		labelTitulo.setBounds(30, 20, 300, 40);
+		headerPanel.add(labelTitulo);
 
-        botonCerrarSesion = new JButton("Cerrar sesión");
-        botonCerrarSesion.setBounds(1, 1, 158, 35);
-        botonCerrarSesion.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        botonCerrarSesion.setForeground(new Color(45, 55, 72));
-        botonCerrarSesion.setBackground(Color.WHITE);
-        botonCerrarSesion.setBorderPainted(false);
-        botonCerrarSesion.setFocusPainted(false);
-        botonCerrarSesion.setHorizontalAlignment(SwingConstants.LEFT);
-        botonCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
-        panelSalirYAcerca.add(botonCerrarSesion);
+		// Rol
+		labelRol = new JLabel("Administrador");
+		labelRol.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		labelRol.setForeground(colorAzulAccion);
+		labelRol.setHorizontalAlignment(SwingConstants.RIGHT);
+		labelRol.setBounds(480, 20, 120, 20);
+		headerPanel.add(labelRol);
 
-        botonAcercaDe = new JButton("Acerca de");
-        botonAcercaDe.setBounds(1, 36, 158, 35);
-        botonAcercaDe.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        botonAcercaDe.setForeground(new Color(45, 55, 72));
-        botonAcercaDe.setBackground(Color.WHITE);
-        botonAcercaDe.setBorderPainted(false);
-        botonAcercaDe.setFocusPainted(false);
-        botonAcercaDe.setHorizontalAlignment(SwingConstants.LEFT);
-        botonAcercaDe.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
-        panelSalirYAcerca.add(botonAcercaDe);
-        
-        separador = new JSeparator();
-        separador.setBounds(10, 75, 140, 2);
-        separador.setForeground(new Color(230, 230, 230));
-        separador.setVisible(false);
-        panelSalirYAcerca.add(separador);
+		// Nombre Usuario
+		labelUsuario = new JLabel("Usuario");
+		labelUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		labelUsuario.setForeground(Color.GRAY);
+		labelUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
+		labelUsuario.setBounds(430, 40, 170, 20);
+		headerPanel.add(labelUsuario);
 
-        textoAcercaDe = new JTextArea("Versión 1.0\n\nDesarrollador:\nMiguel Monteagudo");
-        textoAcercaDe.setBounds(10, 85, 140, 90);
-        textoAcercaDe.setEditable(false);
-        textoAcercaDe.setOpaque(false);
-        textoAcercaDe.setLineWrap(true);
-        textoAcercaDe.setWrapStyleWord(true);
-        textoAcercaDe.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-        textoAcercaDe.setForeground(Color.GRAY); 
-        textoAcercaDe.setVisible(false);
-        panelSalirYAcerca.add(textoAcercaDe);
+		// Botón de foto de perfil, para cerrar sesión
 
+		panelSalirYAcerca = new JPanel();
+		panelSalirYAcerca.setBounds(510, 82, 160, 75);
+		panelSalirYAcerca.setLayout(null);
+		panelSalirYAcerca.setBackground(Color.WHITE);
+		panelSalirYAcerca.setBorder(new LineBorder(new Color(200, 200, 200), 1));
+		add(panelSalirYAcerca);
+		panelSalirYAcerca.setVisible(false);
 
-        imagenPerfil = new ImageIcon("images/perfil.png");
-        botonPerfil = new JButton(imagenPerfil);
-        botonPerfil.setBounds(610, 15, 50, 50);
-        botonPerfil.setBorder(null);
-        botonPerfil.setContentAreaFilled(false);
-        botonPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        headerPanel.add(botonPerfil);
+		botonCerrarSesion = new JButton("Cerrar sesión");
+		botonCerrarSesion.setBounds(1, 1, 158, 35);
+		botonCerrarSesion.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		botonCerrarSesion.setForeground(new Color(45, 55, 72));
+		botonCerrarSesion.setBackground(Color.WHITE);
+		botonCerrarSesion.setBorderPainted(false);
+		botonCerrarSesion.setFocusPainted(false);
+		botonCerrarSesion.setHorizontalAlignment(SwingConstants.LEFT);
+		botonCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        botonPerfil.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean estado = panelSalirYAcerca.isVisible();
-                panelSalirYAcerca.setVisible(!estado);
-                if (estado) {
-                    textoAcercaDe.setVisible(false);
-                    separador.setVisible(false);
-                    panelSalirYAcerca.setSize(160, 75);
-                }
-            }
-        });
+		panelSalirYAcerca.add(botonCerrarSesion);
 
-        botonCerrarSesion.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.mostrarInicioSesion();
-            }
-        });
+		botonAcercaDe = new JButton("Acerca de");
+		botonAcercaDe.setBounds(1, 36, 158, 35);
+		botonAcercaDe.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		botonAcercaDe.setForeground(new Color(45, 55, 72));
+		botonAcercaDe.setBackground(Color.WHITE);
+		botonAcercaDe.setBorderPainted(false);
+		botonAcercaDe.setFocusPainted(false);
+		botonAcercaDe.setHorizontalAlignment(SwingConstants.LEFT);
+		botonAcercaDe.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        botonAcercaDe.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean mostrar = !textoAcercaDe.isVisible();
-                textoAcercaDe.setVisible(mostrar);
-                separador.setVisible(mostrar);
-                if(mostrar) {
-                	panelSalirYAcerca.setSize(160, 155);
-                }else {
-                	panelSalirYAcerca.setSize(160, 75);
-                }
-            }
-        });
-      
-        
-        // Boton enviar noticias
-        
-        botonEnviarNoticias = new JButton("Enviar Noticias");
-        botonEnviarNoticias.setBounds(200, 117, 300, 40);
-        botonEnviarNoticias.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonEnviarNoticias.setBackground(new Color(66, 153, 225));
-        botonEnviarNoticias.setForeground(Color.WHITE);
-        botonEnviarNoticias.setFocusPainted(false);
-        botonEnviarNoticias.setBorderPainted(false); 
-        botonEnviarNoticias.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonEnviarNoticias);
-        botonEnviarNoticias.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	EnviarNoticias.enviarTodasNoticias(usuarioActual);
-            }
-        });
-        
-        // Noticias economia
-        botonEconomia = new JButton("Economia");
-        botonEconomia.setBounds(70, 218, 160, 120);
-        botonEconomia.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonEconomia.setForeground(new Color(45, 55, 72));
-        botonEconomia.setBackground(Color.WHITE);
-        botonEconomia.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonEconomia.setFocusPainted(false);
-        botonEconomia.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonEconomia);
-        botonEconomia.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               mainFrame.mostrarPanelNoticiasEconomia(usuarioActual);
-            }
-        });
-        
+		panelSalirYAcerca.add(botonAcercaDe);
 
+		separador = new JSeparator();
+		separador.setBounds(10, 75, 140, 2);
+		separador.setForeground(new Color(230, 230, 230));
+		separador.setVisible(false);
+		panelSalirYAcerca.add(separador);
 
-        // noticias deportes
-        botonDeportes = new JButton("Deportes");
-        botonDeportes.setBounds(270, 369, 160, 120); 
-        botonDeportes.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonDeportes.setForeground(new Color(45, 55, 72));
-        botonDeportes.setBackground(Color.WHITE);
-        botonDeportes.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonDeportes.setFocusPainted(false);
-        botonDeportes.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonDeportes);
-        botonDeportes.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               mainFrame.mostrarPanelNoticiasDeportes(usuarioActual);
-            }
-        });
-        
+		textoAcercaDe = new JTextArea("Versión 1.0\n\nDesarrollador:\nMiguel Monteagudo");
+		textoAcercaDe.setBounds(10, 85, 140, 90);
+		textoAcercaDe.setEditable(false);
+		textoAcercaDe.setOpaque(false);
+		textoAcercaDe.setLineWrap(true);
+		textoAcercaDe.setWrapStyleWord(true);
+		textoAcercaDe.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+		textoAcercaDe.setForeground(Color.GRAY);
+		textoAcercaDe.setVisible(false);
+		panelSalirYAcerca.add(textoAcercaDe);
 
+		imagenPerfil = new ImageIcon("images/perfil.png");
+		botonPerfil = new JButton(imagenPerfil);
+		botonPerfil.setBounds(610, 15, 50, 50);
+		botonPerfil.setBorder(null);
+		botonPerfil.setContentAreaFilled(false);
+		botonPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		headerPanel.add(botonPerfil);
 
-        // noticias nacionales
-        botonNacional = new JButton("Nacionales");
-        botonNacional.setBounds(470, 369, 160, 120);
-        botonNacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonNacional.setForeground(new Color(45, 55, 72));
-        botonNacional.setBackground(Color.WHITE);
-        botonNacional.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonNacional.setFocusPainted(false);
-        botonNacional.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonNacional);
-        botonNacional.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               mainFrame.mostrarPanelNoticiasNacional(usuarioActual);
-            }
-        });
-        
-     // Noticias internacional
-        botonInternacional = new JButton("Internacionales");
-        botonInternacional.setBounds(70, 369, 160, 120);
-        botonInternacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonInternacional.setForeground(new Color(45, 55, 72));
-        botonInternacional.setBackground(Color.WHITE);
-        botonInternacional.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonInternacional.setFocusPainted(false);
-        botonInternacional.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonInternacional);
-        botonInternacional.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               mainFrame.mostrarPanelNoticiasInteracional(usuarioActual);
-            }
-        });
+		botonPerfil.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				boolean estado = panelSalirYAcerca.isVisible();
+				panelSalirYAcerca.setVisible(!estado);
+				if (estado) {
+					textoAcercaDe.setVisible(false);
+					separador.setVisible(false);
+					panelSalirYAcerca.setSize(160, 75);
+				}
+			}
+		});
 
+		botonCerrarSesion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarInicioSesion();
+			}
+		});
 
-        // noticias videojuegos
-        botonVideojuegos = new JButton("Videojuegos");
-        botonVideojuegos.setBounds(270, 218, 160, 120); 
-        botonVideojuegos.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonVideojuegos.setForeground(new Color(45, 55, 72));
-        botonVideojuegos.setBackground(Color.WHITE);
-        botonVideojuegos.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonVideojuegos.setFocusPainted(false);
-        botonVideojuegos.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonVideojuegos);
-        botonVideojuegos.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                 mainFrame.mostrarPanelNoticiasVideojuegos(usuarioActual); 
-            }
-        });
-        
+		botonAcercaDe.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				boolean mostrar = !textoAcercaDe.isVisible();
+				textoAcercaDe.setVisible(mostrar);
+				separador.setVisible(mostrar);
+				if (mostrar) {
+					panelSalirYAcerca.setSize(160, 155);
+				} else {
+					panelSalirYAcerca.setSize(160, 75);
+				}
+			}
+		});
 
+		// Boton enviar noticias
 
-        // noticias politica
-        botonPolitica = new JButton("Politica");
-        botonPolitica.setBounds(470, 218, 160, 120);
-        botonPolitica.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonPolitica.setForeground(new Color(45, 55, 72));
-        botonPolitica.setBackground(Color.WHITE);
-        botonPolitica.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonPolitica.setFocusPainted(false);
-        botonPolitica.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonPolitica);
-        botonPolitica.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                 mainFrame.mostrarPanelNoticiasPolitica(usuarioActual); 
-            }
-        });
-        
-      //volver al menu
-        botonVolver = new JButton("Volver al Menú Principal");
-        botonVolver.setBounds(470, 490, 200, 30);
-        botonVolver.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        botonVolver.setForeground(new Color(100, 100, 100));
-        botonVolver.setContentAreaFilled(false);
-        botonVolver.setBorderPainted(false);
-        botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		botonEnviarNoticias = new JButton("Enviar Noticias");
+		botonEnviarNoticias.setBounds(200, 117, 300, 40);
+		botonEnviarNoticias.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonEnviarNoticias.setBackground(new Color(66, 153, 225));
+		botonEnviarNoticias.setForeground(Color.WHITE);
+		botonEnviarNoticias.setFocusPainted(false);
+		botonEnviarNoticias.setBorderPainted(false);
+		botonEnviarNoticias.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonEnviarNoticias);
+		botonEnviarNoticias.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EnviarNoticias.enviarTodasNoticias(usuarioActual);
+			}
+		});
 
-        botonVolver.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                 mainFrame.mostrarPanelAdmin(usuarioActual); 
-            }
-        });
-        add(botonVolver);
+		// Noticias economia
+		botonEconomia = new JButton("Economia");
+		botonEconomia.setBounds(70, 218, 160, 120);
+		botonEconomia.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonEconomia.setForeground(new Color(45, 55, 72));
+		botonEconomia.setBackground(Color.WHITE);
+		botonEconomia.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+		botonEconomia.setFocusPainted(false);
+		botonEconomia.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonEconomia);
+		botonEconomia.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarPanelNoticiasEconomia(usuarioActual);
+			}
+		});
+
+		// noticias deportes
+		botonDeportes = new JButton("Deportes");
+		botonDeportes.setBounds(270, 369, 160, 120);
+		botonDeportes.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonDeportes.setForeground(new Color(45, 55, 72));
+		botonDeportes.setBackground(Color.WHITE);
+		botonDeportes.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+		botonDeportes.setFocusPainted(false);
+		botonDeportes.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonDeportes);
+		botonDeportes.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarPanelNoticiasDeportes(usuarioActual);
+			}
+		});
+
+		// noticias nacionales
+		botonNacional = new JButton("Nacionales");
+		botonNacional.setBounds(470, 369, 160, 120);
+		botonNacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonNacional.setForeground(new Color(45, 55, 72));
+		botonNacional.setBackground(Color.WHITE);
+		botonNacional.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+		botonNacional.setFocusPainted(false);
+		botonNacional.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonNacional);
+		botonNacional.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarPanelNoticiasNacional(usuarioActual);
+			}
+		});
+
+		// Noticias internacional
+		botonInternacional = new JButton("Internacionales");
+		botonInternacional.setBounds(70, 369, 160, 120);
+		botonInternacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonInternacional.setForeground(new Color(45, 55, 72));
+		botonInternacional.setBackground(Color.WHITE);
+		botonInternacional.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+		botonInternacional.setFocusPainted(false);
+		botonInternacional.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonInternacional);
+		botonInternacional.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarPanelNoticiasInteracional(usuarioActual);
+			}
+		});
+
+		// noticias videojuegos
+		botonVideojuegos = new JButton("Videojuegos");
+		botonVideojuegos.setBounds(270, 218, 160, 120);
+		botonVideojuegos.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonVideojuegos.setForeground(new Color(45, 55, 72));
+		botonVideojuegos.setBackground(Color.WHITE);
+		botonVideojuegos.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+		botonVideojuegos.setFocusPainted(false);
+		botonVideojuegos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonVideojuegos);
+		botonVideojuegos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarPanelNoticiasVideojuegos(usuarioActual);
+			}
+		});
+
+		// noticias politica
+		botonPolitica = new JButton("Politica");
+		botonPolitica.setBounds(470, 218, 160, 120);
+		botonPolitica.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonPolitica.setForeground(new Color(45, 55, 72));
+		botonPolitica.setBackground(Color.WHITE);
+		botonPolitica.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
+		botonPolitica.setFocusPainted(false);
+		botonPolitica.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonPolitica);
+		botonPolitica.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarPanelNoticiasPolitica(usuarioActual);
+			}
+		});
+
+		// volver al menu
+		botonVolver = new JButton("Volver al Menú Principal");
+		botonVolver.setBounds(470, 490, 200, 30);
+		botonVolver.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		botonVolver.setForeground(new Color(100, 100, 100));
+		botonVolver.setContentAreaFilled(false);
+		botonVolver.setBorderPainted(false);
+		botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+		botonVolver.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.mostrarPanelAdmin(usuarioActual);
+			}
+		});
+		add(botonVolver);
 	}
-	
+
 	public void setUsuario(Usuario usuario) {
 		this.usuarioActual = usuario;
-		
+
 		if (usuario != null) {
-            labelUsuario.setText(usuario.getNombreUsuario());
-        }
+			labelUsuario.setText(usuario.getNombreUsuario());
+		}
 	}
 }

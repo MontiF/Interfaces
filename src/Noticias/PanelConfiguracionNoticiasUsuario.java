@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-public class PanelInicioUsuario extends JPanel {
+public class PanelConfiguracionNoticiasUsuario extends JPanel {
 	private Usuario usuarioActual;
 
 	private JPanel headerPanel;
@@ -36,7 +36,8 @@ public class PanelInicioUsuario extends JPanel {
 	private Color colorAzulAccion = new Color(66, 153, 225);
 	private JButton botonAcercaDe;
 
-	public PanelInicioUsuario(Pantalla mainFrame) {
+	public PanelConfiguracionNoticiasUsuario(Pantalla mainFrame) {
+		
 		setLayout(null);
 		setBackground(colorFondo);
 		setSize(700, 600);
@@ -49,7 +50,7 @@ public class PanelInicioUsuario extends JPanel {
 		add(headerPanel);
 
 		// Titulo
-		labelTitulo = new JLabel("Panel Usuario");
+		labelTitulo = new JLabel("Configración Noticias");
 		labelTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		labelTitulo.setForeground(colorTextoOscuro);
 		labelTitulo.setBounds(30, 20, 300, 40);
@@ -168,7 +169,8 @@ public class PanelInicioUsuario extends JPanel {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuarioActual = usuario;
-
+		GestionUsuarios.loguearse(usuario);
+		
 		if (usuario != null) {
 			labelUsuario.setText(usuario.getNombreUsuario());
 		}

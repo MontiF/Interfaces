@@ -1,6 +1,5 @@
 package Noticias;
 
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -9,44 +8,41 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
-public class EmailEnviar {	
+public class EmailEnviar {
 	/**
-	   Outgoing Mail (SMTP) Server
-	   requires TLS or SSL: smtp.gmail.com (SSL)
-	   Use Authentication: Yes
-	   Port for SSL: 465
+	 * Outgoing Mail (SMTP) Server requires TLS or SSL: smtp.gmail.com (SSL) Use
+	 * Authentication: Yes Port for SSL: 465
 	 */
 	static Session session;
-	
+
 	public static void datos() {
 		final String fromEmail = "miguel.monteagudo.dosa@gmail.com";
 		final String password = "oujt qvgn momv kxpt";
-		
+
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory"); 
+		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.port", "465");	
-		Authenticator auth = new Authenticator() {		
+		props.put("mail.smtp.port", "465");
+		Authenticator auth = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(fromEmail, password);
 			}
-		};		
+		};
 		session = Session.getDefaultInstance(props, auth);
-			
-	   
+
 	}
 
 	public static void EmailRecuperacion(String toEmail, String passwordUsuario) {
 		datos();
-		EmailUtil.sendEmail(session, toEmail,"Recuperacion de Contraseña", "Su contraseña es: " +passwordUsuario);
+		EmailUtil.sendEmail(session, toEmail, "Recuperacion de Contraseña", "Su contraseña es: " + passwordUsuario);
 	}
+
 	public static void EmailNoticias(String toEmail, String correoCompleto) {
 		datos();
-		EmailUtil.sendEmail(session, toEmail,"Noticias", correoCompleto);
+		EmailUtil.sendEmail(session, toEmail, "Noticias", correoCompleto);
 	}
-	
-	
+
 }
 
