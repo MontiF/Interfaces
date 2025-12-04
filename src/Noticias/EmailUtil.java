@@ -8,7 +8,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class EmailUtilRecuperar {
+public class EmailUtil {
 	/**
 	 *
 	 * @param session
@@ -23,7 +23,7 @@ public class EmailUtilRecuperar {
 	      msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
 	      msg.addHeader("format", "flowed");
 	      msg.addHeader("Content-Transfer-Encoding", "8bit");
-	      msg.setFrom(new InternetAddress("no_reply@noticias.com", "Recuperacion"));      	      
+	      msg.setFrom(new InternetAddress("no_reply@noticias.com","Noticias"));      	      
 	      msg.setReplyTo(InternetAddress.parse("no_reply_noticias@noticias.com", false));	      
 	      msg.setSubject(subject, "UTF-8");
 	      msg.setText(body, "UTF-8");

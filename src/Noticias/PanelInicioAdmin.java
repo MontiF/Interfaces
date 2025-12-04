@@ -3,7 +3,6 @@ package Noticias;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -197,8 +196,13 @@ public class PanelInicioAdmin extends JPanel{
         botonVerNoticias.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
         botonVerNoticias.setFocusPainted(false);
         botonVerNoticias.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
         add(botonVerNoticias);
+        botonVerNoticias.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               mainFrame.mostrarTodasNoticias(usuarioActual);
+            }
+        });
 
 
         // Hora Automatica

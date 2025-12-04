@@ -16,6 +16,13 @@ public class Pantalla extends JFrame{
     private PanelInicioAdmin panelAdmin; 
     private PanelRecuperarPassword panelPassword;
     private PanelGestionUsuario panelGestionUsuario;
+    private PanelTodasNoticias panelTodasNoticias;
+    private PanelNoticiasEconomia panelNoticiasEconomia;
+    private PanelNoticiasDeportes panelNoticiasDeportes;
+    private PanelNoticiasNacional panelNoticiasNacional;
+    private PanelNoticiasInternacional panelNoticiasInternacional;
+    private PanelNoticiasVideojuegos panelNoticiasVideojuegos;
+    private PanelNoticiasPolitica panelNoticiasPolitica;
 	
 	public Pantalla() {
 		setTitle("Noticias");
@@ -33,14 +40,28 @@ public class Pantalla extends JFrame{
 		panelAdmin = new PanelInicioAdmin(this);
 		panelPassword = new PanelRecuperarPassword(this);
 		panelGestionUsuario = new PanelGestionUsuario(this);
+		panelTodasNoticias = new PanelTodasNoticias(this);
+		panelNoticiasEconomia = new PanelNoticiasEconomia(this);
+		panelNoticiasDeportes = new PanelNoticiasDeportes(this);
+		panelNoticiasNacional = new PanelNoticiasNacional(this);
+		panelNoticiasInternacional = new PanelNoticiasInternacional(this);
+		panelNoticiasVideojuegos = new PanelNoticiasVideojuegos(this);
+		panelNoticiasPolitica = new PanelNoticiasPolitica(this);
+		
 		
 		contentPane.add(panelInicio, "Login");
         contentPane.add(panelUsuario, "AplicacionUsuario");
         contentPane.add(panelAdmin, "AplicacionAdmin");
         contentPane.add(panelPassword, "RecuperarPassword");
         contentPane.add(panelGestionUsuario, "ConfigurarUsuarios");
+        contentPane.add(panelTodasNoticias, "TodasNoticias");
+        contentPane.add(panelNoticiasEconomia, "NoticiasEconomia");
+        contentPane.add(panelNoticiasDeportes, "NoticiasDeportes");
+        contentPane.add(panelNoticiasNacional, "NoticiasNacional");
+        contentPane.add(panelNoticiasInternacional,"NoticiasInternacional");
+        contentPane.add(panelNoticiasVideojuegos, "NoticiasVideojuegos");
+        contentPane.add(panelNoticiasPolitica, "NoticiasPolitica");
         
-        cardLayout.show(contentPane, "Login");
 		
 	}
 	public void mostrarPanelUsuario(Usuario usuario) {
@@ -60,6 +81,35 @@ public class Pantalla extends JFrame{
 	public void mostrarGestionUsuarios(Usuario usuario){
 		panelGestionUsuario.setUsuario(usuario);
 		cardLayout.show(contentPane, "ConfigurarUsuarios");
+	}
+	public void mostrarTodasNoticias(Usuario usuario) {
+		panelTodasNoticias.setUsuario(usuario);
+		cardLayout.show(contentPane, "TodasNoticias");
+	}
+	public void mostrarPanelNoticiasEconomia(Usuario usuario) {
+		panelNoticiasEconomia.setUsuario(usuario);
+		cardLayout.show(contentPane, "NoticiasEconomia");
+		
+	}
+	public void mostrarPanelNoticiasDeportes(Usuario usuario) {
+		panelNoticiasDeportes.setUsuario(usuario);
+		cardLayout.show(contentPane, "NoticiasDeportes");
+	}
+	public void mostrarPanelNoticiasNacional(Usuario usuario) {
+		panelNoticiasNacional.setUsuario(usuario);
+		cardLayout.show(contentPane, "NoticiasNacional");
+	}
+	public void mostrarPanelNoticiasInteracional(Usuario usuario) {
+		panelNoticiasInternacional.setUsuario(usuario);
+		cardLayout.show(contentPane, "NoticiasInternacional");
+	}
+	public void mostrarPanelNoticiasVideojuegos(Usuario usuario) {
+		panelNoticiasVideojuegos.setUsuario(usuario);
+		cardLayout.show(contentPane, "NoticiasVideojuegos");
+	}
+	public void mostrarPanelNoticiasPolitica(Usuario usuario) {
+		panelNoticiasPolitica.setUsuario(usuario);
+		cardLayout.show(contentPane, "NoticiasPolitica");
 	}
 	
 	

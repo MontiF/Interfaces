@@ -15,10 +15,10 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-public class PanelGestionUsuario extends JPanel{
-	private Usuario usuarioActual;
-    
-    private JPanel headerPanel;
+public class PanelNoticiasNacional extends JPanel{
+private Usuario usuarioActual;
+	
+	private JPanel headerPanel;
     private JLabel labelTitulo;
     private JButton botonPerfil;
     private JLabel labelUsuario;
@@ -28,17 +28,21 @@ public class PanelGestionUsuario extends JPanel{
     private JButton botonCerrarSesion;
     private JTextArea textoAcercaDe;
     private JSeparator separador;
-    private JButton botonAgregarUsuario;
-    private JButton botonBorrarUsuario;
+ 
+    private JTextArea noticia1;
+    private JTextArea noticia2;
+    
     private JButton botonVolver;
+    
 
     private Color colorFondo = new Color(237, 242, 247);
     private Color colorTextoOscuro = new Color(45, 55, 72);
     private Color colorAzulAccion = new Color(66, 153, 225);
     private JButton botonAcercaDe;
-	
-	
-	public PanelGestionUsuario(Pantalla mainFrame) {
+    private JLabel webNoticia1;
+    private JLabel webNoticia2;
+    
+	public PanelNoticiasNacional(Pantalla mainFrame) {
 		setLayout(null);
         setBackground(colorFondo);
         setSize(700, 600);
@@ -51,14 +55,14 @@ public class PanelGestionUsuario extends JPanel{
         add(headerPanel);
         
         // Titulo
-        labelTitulo = new JLabel("Panel de Gestion de Usuarios");
+        labelTitulo = new JLabel("Noticias Nacional");
         labelTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
         labelTitulo.setForeground(colorTextoOscuro);
-        labelTitulo.setBounds(30, 20, 400, 40);
+        labelTitulo.setBounds(30, 20, 300, 40);
         headerPanel.add(labelTitulo);
 
         // Rol
-        labelRol = new JLabel("Administrador");
+        labelRol = new JLabel("Rol");
         labelRol.setFont(new Font("Segoe UI", Font.BOLD, 12));
         labelRol.setForeground(colorAzulAccion);
         labelRol.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -167,43 +171,8 @@ public class PanelGestionUsuario extends JPanel{
             }
         });
         
-     // Agregar usuario
-        botonAgregarUsuario = new JButton("Crear Usuario");
-        botonAgregarUsuario.setBounds(70, 260, 160, 120);
-        botonAgregarUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonAgregarUsuario.setForeground(new Color(45, 55, 72));
-        botonAgregarUsuario.setBackground(Color.WHITE);
-        botonAgregarUsuario.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonAgregarUsuario.setFocusPainted(false);
-        botonAgregarUsuario.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        add(botonAgregarUsuario);
-        
-        botonAgregarUsuario.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-              GestionUsuarios.agregarUsuarios();
-            }
-        });
-        
-     // Borrar usuario
-        botonBorrarUsuario = new JButton("Borrar Usuario");
-        botonBorrarUsuario.setBounds(470, 260, 160, 120);
-        botonBorrarUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonBorrarUsuario.setForeground(new Color(45, 55, 72));
-        botonBorrarUsuario.setBackground(Color.WHITE);
-        botonBorrarUsuario.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
-        botonBorrarUsuario.setFocusPainted(false);
-        botonBorrarUsuario.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        add(botonBorrarUsuario);
-        botonBorrarUsuario.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	GestionUsuarios.borrarUsuarios(usuarioActual);
-            }
-        });
-     //volver al menu
-        botonVolver = new JButton("Volver al Menú Principal");
+      //volver
+        botonVolver = new JButton("Volver");
         botonVolver.setBounds(470, 490, 200, 30);
         botonVolver.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         botonVolver.setForeground(new Color(100, 100, 100));
@@ -214,17 +183,58 @@ public class PanelGestionUsuario extends JPanel{
         botonVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 mainFrame.mostrarPanelAdmin(usuarioActual); 
+                 if(usuarioActual.getAdmin() == true) {
+                	 mainFrame.mostrarTodasNoticias(usuarioActual); 
+                 }
             }
         });
         add(botonVolver);
+        
+        // 1 noticia
+        webNoticia1 = new JLabel("RTVE");
+        webNoticia1.setBounds(10, 123, 160, 34);
+        webNoticia1.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        add(webNoticia1);
+        
+        noticia1 = new JTextArea(BuscarNoticias.noticia1Nacional());
+        noticia1.setLineWrap(true);
+        noticia1.setEditable(false);
+        noticia1.setWrapStyleWord(true);
+        noticia1.setBounds(10, 154, 660, 148);
+        noticia1.setOpaque(false);
+        noticia1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        add(noticia1);
+        // 2 noticia
+        webNoticia2 = new JLabel("ABC");
+        webNoticia2.setBounds(10, 268, 160, 34);
+        webNoticia2.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        add(webNoticia2);
+        
+        noticia2 = new JTextArea(BuscarNoticias.noticia2Nacional());
+        noticia2.setLineWrap(true);
+        noticia2.setEditable(false);
+        noticia2.setWrapStyleWord(true);
+        noticia2.setBounds(10, 301, 660, 195);
+        noticia2.setOpaque(false);
+        noticia2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        add(noticia2);
+        
+        
+        
+        
 	}
-	
 	public void setUsuario(Usuario usuario) {
 		this.usuarioActual = usuario;
 		
 		if (usuario != null) {
             labelUsuario.setText(usuario.getNombreUsuario());
-        }
+            if(usuario.getAdmin() == true) {
+            	labelRol.setText("Administrador");
+            }else {
+            	labelRol.setText("Usuario");
+            }
+		}
+		
 	}
 }
+

@@ -1,11 +1,13 @@
 package Noticias;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -48,7 +50,6 @@ private static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
             while ((linea = br.readLine()) != null) {
 
             	if (linea.trim().isEmpty()) {
-                    System.out.println("Ignorada: Línea vacía.");
                     continue;
                 }
             	
@@ -122,11 +123,52 @@ private static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 			JOptionPane.showMessageDialog(null, "Usuario no encontrado", "error" , 0);
 			return;
 		}
-		borrarUsuario();
+		borrarUsuario(nombreUsuario);
 	}
-	private static void borrarUsuario() {
-		
-		JOptionPane.showMessageDialog(null, "Usuario borrado", "confirmación" , 0);
+	private static void borrarUsuario(String nombreUsuarioBorrar) {
+	    File usuariosTXT = new File("datos/usuarios.txt");
+	    
+	    List<String> lineasParaGuardar = new ArrayList<>();
+	    boolean usuarioEncontrado = false;
+
+	    try (BufferedReader br = new BufferedReader(new FileReader(usuariosTXT))) {
+	        String linea;
+	        while ((linea = br.readLine()) != null) {
+	            
+	            if (linea.trim().isEmpty()) {
+	                continue;
+	            }
+
+	            String[] datos = linea.split(";");
+
+	            if (datos.length == 4) {
+	                String nombre = datos[1].trim();
+
+	                if (nombre.equals(nombreUsuarioBorrar)) {
+	                    usuarioEncontrado = true;
+	                    continue;
+	                }
+	            }
+	            lineasParaGuardar.add(linea);
+	        }
+	    } catch (IOException e) {
+	        JOptionPane.showMessageDialog(null, "Error al leer: " + e.getMessage(), "Error", 0);
+	        return;
+	    }
+	    
+	    try (BufferedWriter bw = new BufferedWriter(new FileWriter(usuariosTXT))) {
+	    	for (String l : lineasParaGuardar) {
+	    		bw.write(l);
+	            bw.newLine();
+	        }
+	        JOptionPane.showMessageDialog(null, "Usuario borrado", "Confirmación", 1);
+	    }catch (IOException e) {
+	        JOptionPane.showMessageDialog(null, "No se pudo actualizar el archivo", "Error", 0);
+	        return;
+	    }
+	    listaUsuarios.clear();
+	    inicializarUsuarios();
+	    
 	}
 	public static void agregarUsuarios() {
 		String nombreUsuario = JOptionPane.showInputDialog(null, "Introduce el nombre del Usuario a crear");
@@ -163,30 +205,28 @@ private static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 			JOptionPane.showMessageDialog(null, "Se a cancelado la operación", "error" , 0);
 			return;
 		}
-		String esAdminStri = JOptionPane.showInputDialog(null, "¿Es Admin? (true/false)");
-		esAdminStri.toLowerCase();
-		if (null==esAdminStri){
+		String esAdmin = JOptionPane.showInputDialog(null, "¿Es Admin? (true/false)");
+		esAdmin.toLowerCase();
+		if (null==esAdmin){
 			JOptionPane.showMessageDialog(null, "Se a cancelado la operación", "error" , 0);
 			return;
 		}
-		if(esAdminStri != "false" || esAdminStri != "true") {
-			JOptionPane.showConfirmDialog(null, "El dato debe ser true o false");
+		if(!esAdmin.equals("false") && !esAdmin.equals("true")) {
+			JOptionPane.showMessageDialog(null, "Debe de ser true o false", "error", 0);
+			return;
 		}
-		boolean esAdminBool;
-		if(esAdminStri == "true") {
-			esAdminBool = true;
-		}else {
-			esAdminBool = false;
-		}
-		agregarUsuario(nombreUsuario, correo, password, esAdminBool);
+		agregarUsuario(nombreUsuario, correo, password, esAdmin);
 	}
 	
-	private static void agregarUsuario(String nombreUsuario, String correo, String password, boolean esAdminBool) {
+	private static void agregarUsuario(String nombreUsuario, String correo, String password, String esAdminBool) {
 		File usuariosTXT = new File("datos/usuarios.txt");
-		try (FileWriter fw = new FileWriter(usuariosTXT)) {
+		try (FileWriter fw = new FileWriter(usuariosTXT, true)) {
 			fw.write(correo + ";" + nombreUsuario + ";" + password + ";" +esAdminBool);
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "No se pudo agregar el usuario", "error" , 0);
+			return;
 		}
+		inicializarUsuarios();
 	}
 }
 

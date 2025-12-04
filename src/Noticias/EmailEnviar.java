@@ -9,15 +9,16 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
-public class EmailRecuperar {	
+public class EmailEnviar {	
 	/**
 	   Outgoing Mail (SMTP) Server
 	   requires TLS or SSL: smtp.gmail.com (SSL)
 	   Use Authentication: Yes
 	   Port for SSL: 465
 	 */
-	public static void datos(String toEmail, String passwordUsuario) {
-		
+	static Session session;
+	
+	public static void datos() {
 		final String fromEmail = "miguel.monteagudo.dosa@gmail.com";
 		final String password = "oujt qvgn momv kxpt";
 		
@@ -32,9 +33,20 @@ public class EmailRecuperar {
 				return new PasswordAuthentication(fromEmail, password);
 			}
 		};		
-		Session session = Session.getDefaultInstance(props, auth);
+		session = Session.getDefaultInstance(props, auth);
 			
-	   EmailUtilRecuperar.sendEmail(session, toEmail,"Recuperacion de Contraseña", "Su contraseña es: " +passwordUsuario);
+	   
 	}
+
+	public static void EmailRecuperacion(String toEmail, String passwordUsuario) {
+		datos();
+		EmailUtil.sendEmail(session, toEmail,"Recuperacion de Contraseña", "Su contraseña es: " +passwordUsuario);
+	}
+	public static void EmailNoticias(String toEmail, String correoCompleto) {
+		datos();
+		EmailUtil.sendEmail(session, toEmail,"Noticias", correoCompleto);
+	}
+	
+	
 }
 

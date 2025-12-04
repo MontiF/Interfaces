@@ -7,7 +7,7 @@ public class CorreoRecuperacion {
 			System.out.println("Usuario no encontrado");
 		}else {
 			String passwordUsuario = GestionUsuarios.obtenerPassword(nombreUsuario);
-			EmailRecuperar.datos(correo, passwordUsuario);
+			EmailEnviar.EmailRecuperacion(correo, passwordUsuario);
 		}
 		
 	}
