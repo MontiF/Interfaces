@@ -1,12 +1,14 @@
 package Noticias;
 
 import java.awt.CardLayout;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Pantalla extends JFrame {
-
+	
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 
@@ -27,6 +29,8 @@ public class Pantalla extends JFrame {
 	private PanelNoticiasPolitica panelNoticiasPolitica;
 
 	public Pantalla() {
+		ImageIcon icono = new ImageIcon("images/logo.png");
+		setIconImage(icono.getImage());
 		setTitle("Noticias");
 		setBounds(100, 100, 700, 600);
 		setLocationRelativeTo(null);

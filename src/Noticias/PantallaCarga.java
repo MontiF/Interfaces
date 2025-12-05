@@ -30,19 +30,12 @@ public class PantallaCarga extends JWindow {
 
 		insertarFondo();
 
-		panelPrincipal = new JPanel();
 		panelPrincipal.setLayout(new BorderLayout());
 		panelPrincipal.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		panelPrincipal.setBackground(Color.WHITE);
-
-		titulo = new JLabel("Noticias", SwingConstants.CENTER);
-		titulo.setFont(new Font("Arial", Font.BOLD, 24));
-		titulo.setForeground(new Color(50, 50, 50));
-		panelPrincipal.add(titulo, BorderLayout.CENTER);
 
 		panelInferior = new JPanel();
 		panelInferior.setLayout(new BorderLayout());
-		panelInferior.setBackground(Color.WHITE);
+		panelInferior.setOpaque(false);
 		panelInferior.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
 		mensaje = new JLabel("Iniciando...");
@@ -61,23 +54,22 @@ public class PantallaCarga extends JWindow {
 	}
 
 	private void insertarFondo() {
-		try {
-			imagenFondo = new ImageIcon(getClass().getResource("images/logo.png")).getImage();
-		} catch (Exception e) {
-			System.out.println("No se pudo cargar la imagen: " + e.getMessage());
-		}
+        try {
+            imagenFondo = new ImageIcon("images/logo.png").getImage();
+        } catch (Exception e) {
+            System.out.println("No se pudo cargar la imagen: " + e.getMessage());
+        }
 
-		panelPrincipal = new JPanel() {
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				if (imagenFondo != null) {
-					g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
-				}
-			}
-		};
-
-	}
+        panelPrincipal = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (imagenFondo != null) {
+                    g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+    }
 
 	public static void actualizarProgreso(int valor, String mensajeActual) {
 		barraProgreso.setValue(valor);

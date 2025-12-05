@@ -299,22 +299,6 @@ public class PanelInicioUsuario extends JPanel {
 			}
 		});
 
-		// volver al menu
-		botonVolver = new JButton("Volver al Menú Principal");
-		botonVolver.setBounds(470, 490, 200, 30);
-		botonVolver.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		botonVolver.setForeground(new Color(100, 100, 100));
-		botonVolver.setContentAreaFilled(false);
-		botonVolver.setBorderPainted(false);
-		botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-		botonVolver.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mainFrame.mostrarPanelUsuario(usuarioActual);
-			}
-		});
-		add(botonVolver);
 
 	}
 
