@@ -193,7 +193,7 @@ public class GestionUsuarios {
 
 				String[] datos = linea.split(";");
 
-				if (datos.length == 4) {
+				if (datos.length == 5) {
 					String nombre = datos[1].trim();
 
 					if (nombre.equals(nombreUsuarioBorrar)) {

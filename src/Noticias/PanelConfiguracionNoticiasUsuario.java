@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.JRadioButton;
 
 public class PanelConfiguracionNoticiasUsuario extends JPanel {
 	private Usuario usuarioActual;
@@ -31,13 +32,21 @@ public class PanelConfiguracionNoticiasUsuario extends JPanel {
 	private JTextArea textoAcercaDe;
 	private JSeparator separador;
 
+	private JRadioButton radioEconomia;
+	private JRadioButton radioDeportes;
+	private JRadioButton radioNacional;
+	private JRadioButton radioInternacional;
+	private JRadioButton radioVideojuegos;
+	private JRadioButton radioPolitica;
+	private JButton botonSeleccionarNoticias;
+
 	private Color colorFondo = new Color(237, 242, 247);
 	private Color colorTextoOscuro = new Color(45, 55, 72);
 	private Color colorAzulAccion = new Color(66, 153, 225);
 	private JButton botonAcercaDe;
 
 	public PanelConfiguracionNoticiasUsuario(Pantalla mainFrame) {
-		
+
 		setLayout(null);
 		setBackground(colorFondo);
 		setSize(700, 600);
@@ -165,12 +174,65 @@ public class PanelConfiguracionNoticiasUsuario extends JPanel {
 			}
 		});
 
+		radioEconomia = new JRadioButton("Economia");
+		radioEconomia.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		radioEconomia.setBounds(283, 215, 150, 23);
+		add(radioEconomia);
+
+		radioDeportes = new JRadioButton("Deportes");
+		radioDeportes.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		radioDeportes.setBounds(283, 254, 150, 23);
+		add(radioDeportes);
+
+		radioNacional = new JRadioButton("Nacionales");
+		radioNacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		radioNacional.setBounds(283, 306, 150, 23);
+		add(radioNacional);
+
+		radioVideojuegos = new JRadioButton("Videojuego");
+		radioVideojuegos.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		radioVideojuegos.setBounds(283, 350, 150, 23);
+		add(radioVideojuegos);
+
+		radioPolitica = new JRadioButton("Politica");
+		radioPolitica.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		radioPolitica.setBounds(283, 405, 150, 23);
+		add(radioPolitica);
+
+		radioInternacional = new JRadioButton("Internacionales");
+		radioInternacional.setBounds(283, 453, 150, 23);
+		radioInternacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		add(radioInternacional);
+
+		botonSeleccionarNoticias = new JButton("Seleccionar Noticias");
+		botonSeleccionarNoticias.setBounds(200, 117, 300, 40);
+		botonSeleccionarNoticias.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonSeleccionarNoticias.setBackground(new Color(66, 153, 225));
+		botonSeleccionarNoticias.setForeground(Color.WHITE);
+		botonSeleccionarNoticias.setFocusPainted(false);
+		botonSeleccionarNoticias.setBorderPainted(false);
+		botonSeleccionarNoticias.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		add(botonSeleccionarNoticias);
+		botonSeleccionarNoticias.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				boolean ecomonia = radioEconomia.isSelected();
+				boolean deportes = radioDeportes.isSelected();
+				boolean nacional = radioNacional.isSelected();
+				boolean internacional = radioInternacional.isSelected();
+				boolean videojuegos = radioVideojuegos.isSelected();
+				boolean politica = radioPolitica.isSelected();
+				BuscarNoticias.seleccionarNoticias(usuarioActual, ecomonia, deportes, nacional, internacional,
+						videojuegos, politica);
+				mainFrame.mostrarPanelUsuario(usuarioActual);
+			}
+		});
+
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuarioActual = usuario;
-		GestionUsuarios.loguearse(usuario);
-		
+
 		if (usuario != null) {
 			labelUsuario.setText(usuario.getNombreUsuario());
 		}

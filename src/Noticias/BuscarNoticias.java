@@ -1,6 +1,13 @@
 package Noticias;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -232,6 +239,72 @@ public class BuscarNoticias {
 
 		} catch (IOException e) {
 			return null;
+		}
+	}
+
+	public static void seleccionarNoticias(Usuario usuario, boolean economia, boolean deportes, boolean nacional, boolean internacional, boolean videojuegos, boolean politica) {
+		ArrayList<String> noticias = new ArrayList<>();
+		if(economia == true) {
+			noticias.add("economia");
+		}
+		if(deportes == true) {
+			noticias.add("deportes");
+		}
+		if(nacional == true) {
+			noticias.add("nacional");
+		}
+		if(internacional == true) {
+			noticias.add("internacional");
+		}
+		if(videojuegos == true) {
+			noticias.add("videojuegos");
+		}
+		if(politica == true) {
+			noticias.add("politica");
+		}
+		if(noticias.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Debes de escoger al menos una categoria ", "Error", 0);
+			return;
+		}else {
+			String nombre = usuario.getNombreUsuario();
+			File configUsuariosTXT = new File("datos/" +"config"+ nombre +".txt");
+			try {
+				configUsuariosTXT.createNewFile();
+				try(FileWriter fw = new FileWriter(configUsuariosTXT)){
+					int contador = 0;
+					for(String noticia : noticias){
+						if(contador == 0) {
+							fw.write(noticia);
+						}else {
+							fw.write("\n"+noticia);
+						}
+						contador++;
+					}
+				}catch (Exception e) {
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			GestionUsuarios.loguearse(usuario);
+		}
+	}
+	public static boolean comprobarConfiguracion(String categoria, String nombre) {
+		File configUsuariosTXT = new File("datos/" +"config"+ nombre +".txt");
+		try (BufferedReader br = new BufferedReader(new FileReader(configUsuariosTXT))) {
+			String linea;
+			while ((linea = br.readLine()) != null) {
+
+				if (linea.trim().isEmpty()) {
+					continue;
+				}
+
+				if(linea == categoria) {
+					return true;
+				}
+			}
+			return true;
+		} catch (IOException e) {
+			return false;
 		}
 	}
 }

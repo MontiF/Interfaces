@@ -1,5 +1,4 @@
 miguelmonteagudoferia@gmail.com;Miguel;1234;false;true
-sebastian.silva1.dosa@gmail.com;Sebas;4321;false;false
-roberto.rodriguez.dosa@gmail.com;Roberto;111;false;false
+sebastian.silva1.dosa@gmail.com;Sebas;4321;false;true
+roberto.rodriguez.dosa@gmail.com;Roberto;111;false;true
 miguel.monteagudo.dosa@gmail.com;Admin;admin1;true;false
-a;a;a;false;false
