@@ -298,11 +298,11 @@ public class BuscarNoticias {
 					continue;
 				}
 
-				if(linea == categoria) {
+				if(linea.trim().equals(categoria)) {
 					return true;
 				}
 			}
-			return true;
+			return false;
 		} catch (IOException e) {
 			return false;
 		}

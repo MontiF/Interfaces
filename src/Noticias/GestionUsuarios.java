@@ -179,7 +179,7 @@ public class GestionUsuarios {
 
 	private static void borrarUsuario(String nombreUsuarioBorrar) {
 		File usuariosTXT = new File("datos/usuarios.txt");
-
+		File configUsuariosTXT = new File("datos/" +"config"+ nombreUsuarioBorrar +".txt");
 		List<String> lineasParaGuardar = new ArrayList<>();
 		boolean usuarioEncontrado = false;
 
@@ -218,6 +218,7 @@ public class GestionUsuarios {
 			JOptionPane.showMessageDialog(null, "No se pudo actualizar el archivo", "Error", 0);
 			return;
 		}
+		configUsuariosTXT.delete();
 		listaUsuarios.clear();
 		inicializarUsuarios();
 

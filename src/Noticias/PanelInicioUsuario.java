@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -187,7 +186,7 @@ public class PanelInicioUsuario extends JPanel {
 		botonEnviarNoticias.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				EnviarNoticias.enviarTodasNoticias(usuarioActual);
+				EnviarNoticias.enviarNoticiasUsuario(usuarioActual);
 			}
 		});
 
@@ -200,9 +199,8 @@ public class PanelInicioUsuario extends JPanel {
 		botonEconomia.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
 		botonEconomia.setFocusPainted(false);
 		botonEconomia.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		if(BuscarNoticias.comprobarConfiguracion("economia", nombreUsuario)) {
-			add(botonEconomia);
-		}
+		add(botonEconomia);
+		botonEconomia.setVisible(false);
 		botonEconomia.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -219,9 +217,8 @@ public class PanelInicioUsuario extends JPanel {
 		botonDeportes.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
 		botonDeportes.setFocusPainted(false);
 		botonDeportes.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		if(BuscarNoticias.comprobarConfiguracion("deportes", nombreUsuario)) {	
-			add(botonDeportes);
-		}
+		add(botonDeportes);
+		botonDeportes.setVisible(false);
 		botonDeportes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -238,9 +235,8 @@ public class PanelInicioUsuario extends JPanel {
 		botonNacional.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
 		botonNacional.setFocusPainted(false);
 		botonNacional.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		if(BuscarNoticias.comprobarConfiguracion("nacional", nombreUsuario)) {
-			add(botonNacional);
-		}
+		add(botonNacional);
+		botonNacional.setVisible(false);
 		botonNacional.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -257,9 +253,8 @@ public class PanelInicioUsuario extends JPanel {
 		botonInternacional.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
 		botonInternacional.setFocusPainted(false);
 		botonInternacional.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		if(BuscarNoticias.comprobarConfiguracion("internacional", nombreUsuario)) {
-			add(botonInternacional);
-		}
+		add(botonInternacional);
+		botonInternacional.setVisible(false);
 		botonInternacional.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -276,9 +271,8 @@ public class PanelInicioUsuario extends JPanel {
 		botonVideojuegos.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
 		botonVideojuegos.setFocusPainted(false);
 		botonVideojuegos.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		if(BuscarNoticias.comprobarConfiguracion("videojuegos", nombreUsuario)) {
-			add(botonVideojuegos);
-		}
+		add(botonVideojuegos);
+		botonVideojuegos.setVisible(false);
 		botonVideojuegos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -295,9 +289,9 @@ public class PanelInicioUsuario extends JPanel {
 		botonPolitica.setBorder(new LineBorder(new Color(200, 200, 200), 1, true));
 		botonPolitica.setFocusPainted(false);
 		botonPolitica.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		if(BuscarNoticias.comprobarConfiguracion("politica", nombreUsuario)) {
-			add(botonPolitica);
-		}
+		add(botonPolitica);
+		botonPolitica.setVisible(false);
+		
 		botonPolitica.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -317,7 +311,7 @@ public class PanelInicioUsuario extends JPanel {
 		botonVolver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.mostrarPanelAdmin(usuarioActual);
+				mainFrame.mostrarPanelUsuario(usuarioActual);
 			}
 		});
 		add(botonVolver);
@@ -329,6 +323,19 @@ public class PanelInicioUsuario extends JPanel {
 		if (usuario != null) {
 			labelUsuario.setText(usuario.getNombreUsuario());
 			nombreUsuario = usuario.getNombreUsuario();
+			
+			verBotones();
 		}
+	}
+	public void verBotones() {
+		botonEconomia.setVisible(BuscarNoticias.comprobarConfiguracion("economia", nombreUsuario));
+	    botonDeportes.setVisible(BuscarNoticias.comprobarConfiguracion("deportes", nombreUsuario));
+	    botonNacional.setVisible(BuscarNoticias.comprobarConfiguracion("nacional", nombreUsuario));
+	    botonInternacional.setVisible(BuscarNoticias.comprobarConfiguracion("internacional", nombreUsuario));
+	    botonVideojuegos.setVisible(BuscarNoticias.comprobarConfiguracion("videojuegos", nombreUsuario));
+	    botonPolitica.setVisible(BuscarNoticias.comprobarConfiguracion("politica", nombreUsuario));
+	    
+	    this.revalidate();
+	    this.repaint();
 	}
 }

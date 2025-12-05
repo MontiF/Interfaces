@@ -183,6 +183,8 @@ public class PanelNoticiasPolitica extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (usuarioActual.getAdmin() == true) {
 					mainFrame.mostrarTodasNoticias(usuarioActual);
+				}else {
+					mainFrame.mostrarPanelUsuario(usuarioActual);
 				}
 			}
 		});
