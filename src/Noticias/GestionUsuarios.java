@@ -159,19 +159,19 @@ public class GestionUsuarios {
 		}
 		String nombreUsuario = JOptionPane.showInputDialog(null, "Introduce el nombre del Usuario a borrar");
 		if (null == nombreUsuario) {
-			JOptionPane.showMessageDialog(null, "Se a cancelado la operación", "error", 0);
+			JOptionPane.showMessageDialog(null, "Se a cancelado la operación", "Error", 0);
 			return;
 		}
 		if (nombreUsuario.equals(usuarioActual.getNombreUsuario())) {
-			JOptionPane.showMessageDialog(null, "No te puedes borrar a ti mismo", "error", 0);
+			JOptionPane.showMessageDialog(null, "No te puedes borrar a ti mismo", "Error", 0);
 			return;
 		} else if (nombreUsuario.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Introduce un nombre", "error", 0);
+			JOptionPane.showMessageDialog(null, "Introduce un nombre", "Error", 0);
 			return;
 		}
 		Usuario usuarioBorrar = obtenerUsuarioCompleto(nombreUsuario);
 		if (usuarioBorrar == null) {
-			JOptionPane.showMessageDialog(null, "Usuario no encontrado", "error", 0);
+			JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", 0);
 			return;
 		}
 		borrarUsuario(nombreUsuario);

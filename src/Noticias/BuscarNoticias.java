@@ -1,10 +1,13 @@
 package Noticias;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -36,6 +39,25 @@ public class BuscarNoticias {
 	public static String noticia2Economia() {
 		String url = "https://elpais.com/economia/";
 
+		try {
+			Document doc = Jsoup.connect(url).get();
+
+			Element titular = doc.select("h2").first();
+
+			if (titular != null) {
+				return titular.text();
+			} else {
+				return "No se encontro el titular";
+			}
+
+		} catch (IOException e) {
+			return null;
+		}
+	}
+	
+	public static String noticia3Economia() {
+		String url = "https://www.larazon.es/economia/";
+		//la razon
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -89,6 +111,25 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
+	
+	public static String noticia3Deportes() {
+		String url = "https://www.europapress.es/deportes/";
+		//europappress
+		try {
+			Document doc = Jsoup.connect(url).get();
+
+			Element titular = doc.select("h2").first();
+
+			if (titular != null) {
+				return titular.text();
+			} else {
+				return "No se encontro el titular";
+			}
+
+		} catch (IOException e) {
+			return null;
+		}
+	}
 
 	public static String noticia1Nacional() {
 		String url = "https://www.rtve.es/noticias/";
@@ -116,6 +157,25 @@ public class BuscarNoticias {
 			Document doc = Jsoup.connect(url).get();
 
 			Element titular = doc.select("h2").first();
+
+			if (titular != null) {
+				return titular.text();
+			} else {
+				return "No se encontro el titular";
+			}
+
+		} catch (IOException e) {
+			return null;
+		}
+	}
+	
+	public static String noticia3Nacional() {
+		String url = "https://www.larazon.es";
+		//laRazon
+		try {
+			Document doc = Jsoup.connect(url).get();
+
+			Element titular = doc.select("h3").first();
 
 			if (titular != null) {
 				return titular.text();
@@ -165,6 +225,25 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
+	
+	public static String noticia3Internacional() {
+		String url = "https://www.europapress.es/internacional/";
+		//europappress
+		try {
+			Document doc = Jsoup.connect(url).get();
+
+			Element titular = doc.select("h2").first();
+
+			if (titular != null) {
+				return titular.text();
+			} else {
+				return "No se encontro el titular";
+			}
+
+		} catch (IOException e) {
+			return null;
+		}
+	}
 
 	public static String noticia1Videojuegos() {
 		String url = "https://www.xataka.com/categoria/videojuegos";
@@ -203,6 +282,25 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
+	
+	public static String noticia3Videojuegos() {
+		String url = "https://www.eltiempo.com/noticias/videojuegos";
+		//eltiempo
+		try {
+			Document doc = Jsoup.connect(url).get();
+
+			Element titular = doc.select("h3").first();
+
+			if (titular != null) {
+				return titular.text();
+			} else {
+				return "No se encontro el titular";
+			}
+
+		} catch (IOException e) {
+			return null;
+		}
+	}
 
 	public static String noticia1Politica() {
 		String url = "https://www.publico.es/politica";
@@ -226,6 +324,25 @@ public class BuscarNoticias {
 	public static String noticia2Politica() {
 		String url = "https://theobjective.com/espana/politica/";
 
+		try {
+			Document doc = Jsoup.connect(url).get();
+
+			Element titular = doc.select("h2").first();
+
+			if (titular != null) {
+				return titular.text();
+			} else {
+				return "No se encontro el titular";
+			}
+
+		} catch (IOException e) {
+			return null;
+		}
+	}
+	
+	public static String noticia3Politica() {
+		String url = "https://www.lavanguardia.com/politica";
+		//la vanguardia
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -306,5 +423,28 @@ public class BuscarNoticias {
 		} catch (IOException e) {
 			return false;
 		}
+	}
+	public static void guardarNoticias(Usuario usuario) {
+		String nombre = usuario.getNombreUsuario();
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate hoy = LocalDate.now();
+		String fecha = hoy.format(formato);
+		File archivoGuardar = new File("datos/noticias"+fecha +nombre +".txt");
+		try {
+			if(!archivoGuardar.exists()) {
+				archivoGuardar.createNewFile();
+				try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoGuardar))) {
+					bw.write(EnviarNoticias.guardarNoticiasUsuario(usuario));
+				} catch (IOException e) {
+					return;
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Ya se guardaron las noticias de hoy", "Confirmación", 1);
+				return;
+			}
+		} catch (Exception e) {
+			return;
+		}
+		JOptionPane.showMessageDialog(null, "Noticias guardadas correctamente en " +archivoGuardar, "Confirmación", 1);
 	}
 }

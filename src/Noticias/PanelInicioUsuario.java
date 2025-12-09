@@ -38,8 +38,7 @@ public class PanelInicioUsuario extends JPanel {
 	private JButton botonInternacional;
 	private JButton botonVideojuegos;
 	private JButton botonPolitica;
-
-	private JButton botonVolver;
+	private JButton botonguardarNoticias;
 
 	private Color colorFondo = new Color(237, 242, 247);
 	private Color colorTextoOscuro = new Color(45, 55, 72);
@@ -291,11 +290,26 @@ public class PanelInicioUsuario extends JPanel {
 		botonPolitica.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		add(botonPolitica);
 		botonPolitica.setVisible(false);
-		
 		botonPolitica.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainFrame.mostrarPanelNoticiasPolitica(usuarioActual);
+			}
+		});
+		
+		botonguardarNoticias = new JButton("Guardar Noticias");
+		botonguardarNoticias.setForeground(Color.WHITE);
+		botonguardarNoticias.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonguardarNoticias.setFocusPainted(false);
+		botonguardarNoticias.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		botonguardarNoticias.setBorderPainted(false);
+		botonguardarNoticias.setBackground(new Color(66, 153, 225));
+		botonguardarNoticias.setBounds(200, 507, 300, 40);
+		add(botonguardarNoticias);
+		botonguardarNoticias.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BuscarNoticias.guardarNoticias(usuarioActual);
 			}
 		});
 

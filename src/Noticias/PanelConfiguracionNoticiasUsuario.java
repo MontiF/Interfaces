@@ -174,34 +174,34 @@ public class PanelConfiguracionNoticiasUsuario extends JPanel {
 			}
 		});
 
-		radioEconomia = new JRadioButton("Economia");
+		radioEconomia = new JRadioButton("Economía");
 		radioEconomia.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		radioEconomia.setBounds(283, 215, 150, 23);
+		radioEconomia.setBounds(250, 215, 200, 30);
 		add(radioEconomia);
 
 		radioDeportes = new JRadioButton("Deportes");
 		radioDeportes.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		radioDeportes.setBounds(283, 254, 150, 23);
+		radioDeportes.setBounds(250, 265, 200, 30);
 		add(radioDeportes);
 
 		radioNacional = new JRadioButton("Nacionales");
 		radioNacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		radioNacional.setBounds(283, 306, 150, 23);
+		radioNacional.setBounds(250, 315, 200, 30);
 		add(radioNacional);
 
-		radioVideojuegos = new JRadioButton("Videojuego");
+		radioVideojuegos = new JRadioButton("Videojuegos");
 		radioVideojuegos.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		radioVideojuegos.setBounds(283, 350, 150, 23);
+		radioVideojuegos.setBounds(250, 365, 200, 30);
 		add(radioVideojuegos);
 
-		radioPolitica = new JRadioButton("Politica");
+		radioPolitica = new JRadioButton("Política");
 		radioPolitica.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		radioPolitica.setBounds(283, 405, 150, 23);
+		radioPolitica.setBounds(250, 415, 200, 30);
 		add(radioPolitica);
 
 		radioInternacional = new JRadioButton("Internacionales");
-		radioInternacional.setBounds(283, 453, 150, 23);
 		radioInternacional.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		radioInternacional.setBounds(250, 465, 200, 30);
 		add(radioInternacional);
 
 		botonSeleccionarNoticias = new JButton("Seleccionar Noticias");
