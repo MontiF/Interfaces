@@ -216,7 +216,7 @@ public class PanelInicioAdmin extends JPanel {
 		botonHoraAutomatica.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, HoraAutomatica.leerHora(), "Hora Automatica", 1);
+				JOptionPane.showMessageDialog(null, HoraAutomatica.leerHora() +":00", "Hora Automatica", 1);
 			}
 		});
 

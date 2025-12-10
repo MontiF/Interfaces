@@ -23,6 +23,16 @@ public class GestionUsuarios {
 		}
 		return false;
 	}
+	
+	public static void enviarCorreoTodosUsuarios(){
+		for (Usuario u : listaUsuarios) {
+			if (u.getAdmin() == true) {
+				EnviarNoticias.enviarTodasNoticias(u);
+			}else {
+				EnviarNoticias.enviarNoticiasUsuario(u);
+			}
+		}
+	}
 
 	public static boolean esAdmin(String usuario) {
 		for (Usuario u : listaUsuarios) {

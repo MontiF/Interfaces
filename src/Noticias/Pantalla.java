@@ -1,11 +1,14 @@
 package Noticias;
 
 import java.awt.CardLayout;
-import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 public class Pantalla extends JFrame {
 
@@ -29,12 +32,22 @@ public class Pantalla extends JFrame {
 	private PanelNoticiasPolitica panelNoticiasPolitica;
 
 	public Pantalla() {
+		
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+                if(JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+			}
+		});
+		
 		ImageIcon icono = new ImageIcon("images/logo.png");
 		setIconImage(icono.getImage());
 		setTitle("Noticias");
 		setBounds(100, 100, 700, 600);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 
 		cardLayout = new CardLayout();
@@ -69,7 +82,33 @@ public class Pantalla extends JFrame {
 		contentPane.add(panelNoticiasInternacional, "NoticiasInternacional");
 		contentPane.add(panelNoticiasVideojuegos, "NoticiasVideojuegos");
 		contentPane.add(panelNoticiasPolitica, "NoticiasPolitica");
+		
+		comprobarHora();
+		
+	}
 
+	private void comprobarHora() {
+		Thread hilo = new Thread(() -> {
+			while(true) {
+				try {	
+					int horaAutomatica = Integer.parseInt(HoraAutomatica.leerHora());
+					LocalDateTime locaDate = LocalDateTime.now();
+					int hora = locaDate.getHour();
+					int minutos = locaDate.getMinute();
+					if(hora == horaAutomatica && minutos == 0) {
+						GestionUsuarios.enviarCorreoTodosUsuarios();
+					}
+					
+					Thread.sleep(60000);
+				}catch(InterruptedException e) {
+					break;
+				}catch (Exception e) {
+					
+				}
+			}
+		});
+		hilo.setDaemon(true);
+		hilo.start();
 	}
 
 	public void mostrarPanelUsuario(Usuario usuario) {
