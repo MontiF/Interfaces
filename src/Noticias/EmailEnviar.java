@@ -1,8 +1,11 @@
 package Noticias;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import java.util.Date;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -40,9 +43,14 @@ public class EmailEnviar {
 	}
 
 	public static void EmailNoticias(String toEmail, String correoCompleto) {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate hoy = LocalDate.now();
+		LocalDateTime locaDate = LocalDateTime.now();
+		int hora = locaDate.getHour();
+		int minutos = locaDate.getMinute();
 		datos();
-		EmailUtil.sendEmail(session, toEmail, "Noticias", correoCompleto);
+		EmailUtil.sendEmail(session, toEmail, "NOTICIAS DAM",
+				"Noticias: " + hoy + "(" + hora + ":" + minutos + ") \n" + correoCompleto);
 	}
 
 }
-

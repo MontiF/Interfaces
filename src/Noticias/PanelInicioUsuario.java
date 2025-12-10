@@ -30,7 +30,7 @@ public class PanelInicioUsuario extends JPanel {
 	private JButton botonCerrarSesion;
 	private JTextArea textoAcercaDe;
 	private JSeparator separador;
-	
+
 	private JButton botonEnviarNoticias;
 	private JButton botonEconomia;
 	private JButton botonDeportes;
@@ -172,7 +172,7 @@ public class PanelInicioUsuario extends JPanel {
 				}
 			}
 		});
-		
+
 		botonEnviarNoticias = new JButton("Enviar Noticias");
 		botonEnviarNoticias.setBounds(200, 117, 300, 40);
 		botonEnviarNoticias.setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -296,7 +296,7 @@ public class PanelInicioUsuario extends JPanel {
 				mainFrame.mostrarPanelNoticiasPolitica(usuarioActual);
 			}
 		});
-		
+
 		botonguardarNoticias = new JButton("Guardar Noticias");
 		botonguardarNoticias.setForeground(Color.WHITE);
 		botonguardarNoticias.setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -313,7 +313,6 @@ public class PanelInicioUsuario extends JPanel {
 			}
 		});
 
-
 	}
 
 	public void setUsuario(Usuario usuario) {
@@ -321,19 +320,20 @@ public class PanelInicioUsuario extends JPanel {
 		if (usuario != null) {
 			labelUsuario.setText(usuario.getNombreUsuario());
 			nombreUsuario = usuario.getNombreUsuario();
-			
+
 			verBotones();
 		}
 	}
+
 	public void verBotones() {
 		botonEconomia.setVisible(BuscarNoticias.comprobarConfiguracion("economia", nombreUsuario));
-	    botonDeportes.setVisible(BuscarNoticias.comprobarConfiguracion("deportes", nombreUsuario));
-	    botonNacional.setVisible(BuscarNoticias.comprobarConfiguracion("nacional", nombreUsuario));
-	    botonInternacional.setVisible(BuscarNoticias.comprobarConfiguracion("internacional", nombreUsuario));
-	    botonVideojuegos.setVisible(BuscarNoticias.comprobarConfiguracion("videojuegos", nombreUsuario));
-	    botonPolitica.setVisible(BuscarNoticias.comprobarConfiguracion("politica", nombreUsuario));
-	    
-	    this.revalidate();
-	    this.repaint();
+		botonDeportes.setVisible(BuscarNoticias.comprobarConfiguracion("deportes", nombreUsuario));
+		botonNacional.setVisible(BuscarNoticias.comprobarConfiguracion("nacional", nombreUsuario));
+		botonInternacional.setVisible(BuscarNoticias.comprobarConfiguracion("internacional", nombreUsuario));
+		botonVideojuegos.setVisible(BuscarNoticias.comprobarConfiguracion("videojuegos", nombreUsuario));
+		botonPolitica.setVisible(BuscarNoticias.comprobarConfiguracion("politica", nombreUsuario));
+
+		this.revalidate();
+		this.repaint();
 	}
 }

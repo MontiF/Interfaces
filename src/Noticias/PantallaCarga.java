@@ -54,22 +54,22 @@ public class PantallaCarga extends JWindow {
 	}
 
 	private void insertarFondo() {
-        try {
-            imagenFondo = new ImageIcon("images/logo.png").getImage();
-        } catch (Exception e) {
-            System.out.println("No se pudo cargar la imagen: " + e.getMessage());
-        }
+		try {
+			imagenFondo = new ImageIcon("images/logo.png").getImage();
+		} catch (Exception e) {
+			System.out.println("No se pudo cargar la imagen: " + e.getMessage());
+		}
 
-        panelPrincipal = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                if (imagenFondo != null) {
-                    g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
-                }
-            }
-        };
-    }
+		panelPrincipal = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				if (imagenFondo != null) {
+					g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+				}
+			}
+		};
+	}
 
 	public static void actualizarProgreso(int valor, String mensajeActual) {
 		barraProgreso.setValue(valor);

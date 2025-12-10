@@ -8,16 +8,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Pantalla extends JFrame {
-	
+
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 
 	private PanelInicioSesion panelInicio;
-	
+
 	private PanelInicioUsuario panelUsuario;
 	private PanelConfiguracionNoticiasUsuario panelConfiguracionNoticiasUsuario;
 	private PanelInicioAdmin panelAdmin;
-	
+
 	private PanelRecuperarPassword panelPassword;
 	private PanelGestionUsuario panelGestionUsuario;
 	private PanelTodasNoticias panelTodasNoticias;
@@ -42,7 +42,7 @@ public class Pantalla extends JFrame {
 		setContentPane(contentPane);
 
 		panelInicio = new PanelInicioSesion(this);
-		
+
 		panelUsuario = new PanelInicioUsuario(this);
 		panelConfiguracionNoticiasUsuario = new PanelConfiguracionNoticiasUsuario(this);
 		panelAdmin = new PanelInicioAdmin(this);
@@ -76,10 +76,12 @@ public class Pantalla extends JFrame {
 		panelUsuario.setUsuario(usuario);
 		cardLayout.show(contentPane, "AplicacionUsuario");
 	}
+
 	public void mostrarConfiguracionUsuario(Usuario usuario) {
 		panelConfiguracionNoticiasUsuario.setUsuario(usuario);
 		cardLayout.show(contentPane, "ConfiguracionNoticiasUsuario");
 	}
+
 	public void mostrarPanelAdmin(Usuario usuario) {
 		panelAdmin.setUsuario(usuario);
 		cardLayout.show(contentPane, "AplicacionAdmin");

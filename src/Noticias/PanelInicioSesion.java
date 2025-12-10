@@ -138,9 +138,9 @@ public class PanelInicioSesion extends JPanel {
 					if (usuarioIniciado.getAdmin()) {
 						mainFrame.mostrarPanelAdmin(usuarioIniciado);
 					} else {
-						if(usuarioIniciado.getLogueado() == false) {
+						if (usuarioIniciado.getLogueado() == false) {
 							mainFrame.mostrarConfiguracionUsuario(usuarioIniciado);
-						}else {
+						} else {
 							mainFrame.mostrarPanelUsuario(usuarioIniciado);
 						}
 					}

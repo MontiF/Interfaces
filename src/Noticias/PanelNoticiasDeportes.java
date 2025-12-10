@@ -185,7 +185,7 @@ public class PanelNoticiasDeportes extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (usuarioActual.getAdmin() == true) {
 					mainFrame.mostrarTodasNoticias(usuarioActual);
-				}else {
+				} else {
 					mainFrame.mostrarPanelUsuario(usuarioActual);
 				}
 			}
@@ -201,7 +201,7 @@ public class PanelNoticiasDeportes extends JPanel {
 		noticia1.setLineWrap(true);
 		noticia1.setEditable(false);
 		noticia1.setWrapStyleWord(true);
-		noticia1.setBounds(10, 154, 660, 80);
+		noticia1.setBounds(10, 154, 660, 148);
 		noticia1.setOpaque(false);
 		noticia1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		add(noticia1);
@@ -219,7 +219,7 @@ public class PanelNoticiasDeportes extends JPanel {
 		noticia2.setOpaque(false);
 		noticia2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		add(noticia2);
-		
+
 		// 3 noticia
 		webNoticia3 = new JLabel("Europappress");
 		webNoticia3.setBounds(10, 356, 160, 34);

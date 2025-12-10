@@ -41,7 +41,7 @@ public class GestionUsuarios {
 		}
 		return false;
 	}
-	
+
 	public static void loguearse(Usuario usuario) {
 		File usuariosTXT = new File("datos/usuarios.txt");
 		List<String> lineasParaGuardar = new ArrayList<>();
@@ -80,11 +80,10 @@ public class GestionUsuarios {
 			JOptionPane.showMessageDialog(null, "No se pudo guardar el estado de login", "Error", 0);
 			return;
 		}
-		
+
 		listaUsuarios.clear();
 		inicializarUsuarios();
 	}
-		
 
 	public static boolean inicializarUsuarios() {
 		File usuariosTXT = new File("datos/usuarios.txt");
@@ -179,7 +178,7 @@ public class GestionUsuarios {
 
 	private static void borrarUsuario(String nombreUsuarioBorrar) {
 		File usuariosTXT = new File("datos/usuarios.txt");
-		File configUsuariosTXT = new File("datos/" +"config"+ nombreUsuarioBorrar +".txt");
+		File configUsuariosTXT = new File("datos/" + "config" + nombreUsuarioBorrar + ".txt");
 		List<String> lineasParaGuardar = new ArrayList<>();
 		boolean usuarioEncontrado = false;
 

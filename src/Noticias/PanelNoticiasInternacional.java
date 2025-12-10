@@ -29,8 +29,12 @@ public class PanelNoticiasInternacional extends JPanel {
 	private JTextArea textoAcercaDe;
 	private JSeparator separador;
 
+	private JLabel webNoticia1;
+	private JLabel webNoticia2;
+	private JLabel webNoticia3;
 	private JTextArea noticia1;
 	private JTextArea noticia2;
+	private JTextArea noticia3;
 
 	private JButton botonVolver;
 
@@ -38,8 +42,6 @@ public class PanelNoticiasInternacional extends JPanel {
 	private Color colorTextoOscuro = new Color(45, 55, 72);
 	private Color colorAzulAccion = new Color(66, 153, 225);
 	private JButton botonAcercaDe;
-	private JLabel webNoticia1;
-	private JLabel webNoticia2;
 
 	public PanelNoticiasInternacional(Pantalla mainFrame) {
 		setLayout(null);
@@ -183,7 +185,7 @@ public class PanelNoticiasInternacional extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (usuarioActual.getAdmin() == true) {
 					mainFrame.mostrarTodasNoticias(usuarioActual);
-				}else {
+				} else {
 					mainFrame.mostrarPanelUsuario(usuarioActual);
 				}
 			}
@@ -195,7 +197,6 @@ public class PanelNoticiasInternacional extends JPanel {
 		webNoticia1.setBounds(10, 123, 160, 34);
 		webNoticia1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia1);
-
 		noticia1 = new JTextArea(BuscarNoticias.noticia1Internacional());
 		noticia1.setLineWrap(true);
 		noticia1.setEditable(false);
@@ -204,21 +205,34 @@ public class PanelNoticiasInternacional extends JPanel {
 		noticia1.setOpaque(false);
 		noticia1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		add(noticia1);
+
 		// 2 noticia
 		webNoticia2 = new JLabel("BBC");
-		webNoticia2.setBounds(10, 268, 160, 34);
+		webNoticia2.setBounds(10, 245, 160, 34);
 		webNoticia2.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia2);
-
 		noticia2 = new JTextArea(BuscarNoticias.noticia2Internacional());
 		noticia2.setLineWrap(true);
 		noticia2.setEditable(false);
 		noticia2.setWrapStyleWord(true);
-		noticia2.setBounds(10, 301, 660, 195);
+		noticia2.setBounds(10, 272, 660, 94);
 		noticia2.setOpaque(false);
 		noticia2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		add(noticia2);
 
+		// 3 noticia
+		webNoticia3 = new JLabel("Europappress");
+		webNoticia3.setBounds(10, 356, 160, 34);
+		webNoticia3.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		add(webNoticia3);
+		noticia3 = new JTextArea(BuscarNoticias.noticia3Internacional());
+		noticia3.setLineWrap(true);
+		noticia3.setEditable(false);
+		noticia3.setWrapStyleWord(true);
+		noticia3.setBounds(10, 388, 660, 123);
+		noticia3.setOpaque(false);
+		noticia3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		add(noticia3);
 	}
 
 	public void setUsuario(Usuario usuario) {

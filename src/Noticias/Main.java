@@ -22,10 +22,10 @@ public class Main {
 							try {
 								cargando.actualizarProgreso(20, "Iniciando sistema...");
 								Thread.sleep(1000);
-								
+
 								cargando.actualizarProgreso(40, "Cargando configuraciones...");
- 								Thread.sleep(1000);
-								
+								Thread.sleep(1000);
+
 								cargando.actualizarProgreso(60, "Verificando conexión...");
 								Thread.sleep(1000);
 
@@ -52,7 +52,7 @@ public class Main {
 									JOptionPane.showMessageDialog(null, "Carga Fallida", "error", 0);
 									System.exit(0);
 								}
-								
+
 								cargando.actualizarProgreso(100, "Finalizando carga...");
 								Thread.sleep(1000);
 

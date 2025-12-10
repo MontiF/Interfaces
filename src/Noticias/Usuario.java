@@ -49,6 +49,7 @@ public class Usuario implements Serializable {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
+
 	public boolean getLogueado() {
 		return logueado;
 	}

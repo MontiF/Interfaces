@@ -54,10 +54,10 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
-	
+
 	public static String noticia3Economia() {
 		String url = "https://www.larazon.es/economia/";
-		//la razon
+
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -111,10 +111,10 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
-	
+
 	public static String noticia3Deportes() {
 		String url = "https://www.europapress.es/deportes/";
-		//europappress
+
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -168,10 +168,10 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
-	
+
 	public static String noticia3Nacional() {
 		String url = "https://www.larazon.es";
-		//laRazon
+
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -225,10 +225,10 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
-	
+
 	public static String noticia3Internacional() {
 		String url = "https://www.europapress.es/internacional/";
-		//europappress
+
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -282,10 +282,10 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
-	
+
 	public static String noticia3Videojuegos() {
 		String url = "https://www.eltiempo.com/noticias/videojuegos";
-		//eltiempo
+
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -339,10 +339,10 @@ public class BuscarNoticias {
 			return null;
 		}
 	}
-	
+
 	public static String noticia3Politica() {
 		String url = "https://www.lavanguardia.com/politica";
-		//la vanguardia
+
 		try {
 			Document doc = Jsoup.connect(url).get();
 
@@ -359,45 +359,46 @@ public class BuscarNoticias {
 		}
 	}
 
-	public static void seleccionarNoticias(Usuario usuario, boolean economia, boolean deportes, boolean nacional, boolean internacional, boolean videojuegos, boolean politica) {
+	public static void seleccionarNoticias(Usuario usuario, boolean economia, boolean deportes, boolean nacional,
+			boolean internacional, boolean videojuegos, boolean politica) {
 		ArrayList<String> noticias = new ArrayList<>();
-		if(economia == true) {
+		if (economia == true) {
 			noticias.add("economia");
 		}
-		if(deportes == true) {
+		if (deportes == true) {
 			noticias.add("deportes");
 		}
-		if(nacional == true) {
+		if (nacional == true) {
 			noticias.add("nacional");
 		}
-		if(internacional == true) {
+		if (internacional == true) {
 			noticias.add("internacional");
 		}
-		if(videojuegos == true) {
+		if (videojuegos == true) {
 			noticias.add("videojuegos");
 		}
-		if(politica == true) {
+		if (politica == true) {
 			noticias.add("politica");
 		}
-		if(noticias.isEmpty()) {
+		if (noticias.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Debes de escoger al menos una categoria ", "Error", 0);
 			return;
-		}else {
+		} else {
 			String nombre = usuario.getNombreUsuario();
-			File configUsuariosTXT = new File("datos/" +"config"+ nombre +".txt");
+			File configUsuariosTXT = new File("datos/" + "config" + nombre + ".txt");
 			try {
 				configUsuariosTXT.createNewFile();
-				try(FileWriter fw = new FileWriter(configUsuariosTXT)){
+				try (FileWriter fw = new FileWriter(configUsuariosTXT)) {
 					int contador = 0;
-					for(String noticia : noticias){
-						if(contador == 0) {
+					for (String noticia : noticias) {
+						if (contador == 0) {
 							fw.write(noticia);
-						}else {
-							fw.write("\n"+noticia);
+						} else {
+							fw.write("\n" + noticia);
 						}
 						contador++;
 					}
-				}catch (Exception e) {
+				} catch (Exception e) {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -405,8 +406,9 @@ public class BuscarNoticias {
 			GestionUsuarios.loguearse(usuario);
 		}
 	}
+
 	public static boolean comprobarConfiguracion(String categoria, String nombre) {
-		File configUsuariosTXT = new File("datos/" +"config"+ nombre +".txt");
+		File configUsuariosTXT = new File("datos/" + "config" + nombre + ".txt");
 		try (BufferedReader br = new BufferedReader(new FileReader(configUsuariosTXT))) {
 			String linea;
 			while ((linea = br.readLine()) != null) {
@@ -415,7 +417,7 @@ public class BuscarNoticias {
 					continue;
 				}
 
-				if(linea.trim().equals(categoria)) {
+				if (linea.trim().equals(categoria)) {
 					return true;
 				}
 			}
@@ -424,27 +426,28 @@ public class BuscarNoticias {
 			return false;
 		}
 	}
+
 	public static void guardarNoticias(Usuario usuario) {
 		String nombre = usuario.getNombreUsuario();
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate hoy = LocalDate.now();
 		String fecha = hoy.format(formato);
-		File archivoGuardar = new File("datos/noticias"+fecha +nombre +".txt");
+		File archivoGuardar = new File("datos/noticias" + fecha + nombre + ".txt");
 		try {
-			if(!archivoGuardar.exists()) {
+			if (!archivoGuardar.exists()) {
 				archivoGuardar.createNewFile();
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoGuardar))) {
 					bw.write(EnviarNoticias.guardarNoticiasUsuario(usuario));
 				} catch (IOException e) {
 					return;
 				}
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "Ya se guardaron las noticias de hoy", "Confirmación", 1);
 				return;
 			}
 		} catch (Exception e) {
 			return;
 		}
-		JOptionPane.showMessageDialog(null, "Noticias guardadas correctamente en " +archivoGuardar, "Confirmación", 1);
+		JOptionPane.showMessageDialog(null, "Noticias guardadas correctamente en " + archivoGuardar, "Confirmación", 1);
 	}
 }
