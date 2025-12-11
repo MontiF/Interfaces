@@ -42,7 +42,6 @@ public class Main {
 											}
 										});
 									} catch (InvocationTargetException | InterruptedException e) {
-										e.printStackTrace();
 										JOptionPane.showMessageDialog(null, "Error al crear la pantalla principal:", "Error Crítico", 0);
 									}
 								}
