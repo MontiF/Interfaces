@@ -1,0 +1,15 @@
+noReply;no_reply_noticias@noticias.com
+de;Noticias
+fromEmail;miguel.monteagudo.dosa@gmail.com
+passwordEmail;oujt qvgn momv kxpt
+
+economia;https://www.eleconomista.es;https://elpais.com/economia/;https://www.larazon.es/economia/
+deportes;https://elpais.com/deportes/;https://www.rtve.es/deportes/;https://www.europapress.es/deportes/
+nacional;https://www.rtve.es/noticias/;https://elpais.com;https://www.larazon.es
+internacional;https://www.epochtimes.es/c-internacional?gad_source=1&gad_campaignid=23148586261&gclid=Cj0KCQiA_8TJBhDNARIsAPX5qxR6tzzBv1-5GtNVkJHzoym_GmCZJZNazocvnJfbL-vpbA3PA4t2rhcaAl34EALw_wcB;https://www.bbc.com/mundo;https://www.europapress.es/internacional/
+videojuegos;https://www.xataka.com/categoria/videojuegos;https://vandal.elespanol.com/noticias/videojuegos;https://www.eltiempo.com/noticias/videojuegos
+politica;https://www.publico.es/politica;https://theobjective.com/espana/politica/;https://www.lavanguardia.com/politica
+
+hora;7
+
+Miguel;economia;deportes;nacional

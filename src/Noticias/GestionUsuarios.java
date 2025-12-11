@@ -79,6 +79,7 @@ public class GestionUsuarios {
 				}
 			}
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "No se han podido leer los usuarios", "Error", 0);
 		}
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(usuariosTXT))) {
@@ -121,6 +122,7 @@ public class GestionUsuarios {
 			}
 			return true;
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "No se han podido leer los usuarios", "Error", 0);
 			return false;
 		}
 	}
@@ -247,6 +249,11 @@ public class GestionUsuarios {
 			JOptionPane.showMessageDialog(null, "Introduce un nombre", "Error", 0);
 			return;
 		}
+		if (nombreUsuario.contains(";") || nombreUsuario.contains(",")) {
+			JOptionPane.showMessageDialog(null, "No se permiten los caracteres ';' o ',' en el nombre", "Error", 0);
+			return;
+		}
+
 		Usuario usuarioAgregar = obtenerUsuarioCompleto(nombreUsuario);
 		if (usuarioAgregar != null) {
 			JOptionPane.showMessageDialog(null, "Usuario ya existente", "Error", 0);
@@ -262,6 +269,10 @@ public class GestionUsuarios {
 			JOptionPane.showMessageDialog(null, "Introduce un correo", "Error", 0);
 			return;
 		}
+		if (correo.contains(";") || correo.contains(",")) {
+			JOptionPane.showMessageDialog(null, "No se permiten los caracteres ';' o ',' en el correo", "Error", 0);
+			return;
+		}
 		usuarioAgregar = obtenerUsuarioCompletoCorreo(correo);
 		if (usuarioAgregar != null) {
 			JOptionPane.showMessageDialog(null, "Correo ya vinculado", "Error", 0);
@@ -270,6 +281,10 @@ public class GestionUsuarios {
 		String password = JOptionPane.showInputDialog(null, "Introduce una contraseña");
 		if (null == password) {
 			JOptionPane.showMessageDialog(null, "Se a cancelado la operación", "Error", 0);
+			return;
+		}
+		if (password.contains(";") || password.contains(",")) {
+			JOptionPane.showMessageDialog(null, "No se permiten los caracteres ';' o ',' en la contraseña", "Error", 0);
 			return;
 		}
 		String esAdmin = JOptionPane.showInputDialog(null, "¿Es Admin? (true/false)");

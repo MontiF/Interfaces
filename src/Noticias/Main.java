@@ -42,6 +42,8 @@ public class Main {
 											}
 										});
 									} catch (InvocationTargetException | InterruptedException e) {
+										e.printStackTrace();
+										JOptionPane.showMessageDialog(null, "Error al crear la pantalla principal:", "Error Crítico", 0);
 									}
 								}
 
@@ -68,11 +70,13 @@ public class Main {
 								});
 
 							} catch (InterruptedException e) {
+								JOptionPane.showMessageDialog(null, "Se ha interrumpido la carga", "Error", 0);
 							}
 						}
 					}).start();
 
 				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "No se ha podido iniciar el programa", "Error", 0);
 				}
 			}
 		});

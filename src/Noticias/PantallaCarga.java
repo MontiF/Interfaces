@@ -9,6 +9,7 @@ import java.awt.Image;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JWindow;
@@ -57,7 +58,7 @@ public class PantallaCarga extends JWindow {
 		try {
 			imagenFondo = new ImageIcon("images/logo.png").getImage();
 		} catch (Exception e) {
-			System.out.println("No se pudo cargar la imagen: " + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Al cargar la imagen de fondo", "Error", 0);
 		}
 
 		panelPrincipal = new JPanel() {

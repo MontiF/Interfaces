@@ -18,7 +18,7 @@ import org.jsoup.nodes.Element;
 
 public class BuscarNoticias {
 	public static String noticia1Economia() {
-		String url = "https://www.eleconomista.es";
+		String url = obtenerUrl("economia", 0);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -32,12 +32,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia2Economia() {
-		String url = "https://elpais.com/economia/";
+		String url = obtenerUrl("economia", 1);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -51,12 +52,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia3Economia() {
-		String url = "https://www.larazon.es/economia/";
+		String url = obtenerUrl("economia", 2);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -70,12 +72,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia1Deportes() {
-		String url = "https://elpais.com/deportes/";
+		String url = obtenerUrl("deportes", 0);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -89,12 +92,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia2Deportes() {
-		String url = "https://www.rtve.es/deportes/";
+		String url = obtenerUrl("deportes", 1);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -108,12 +112,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia3Deportes() {
-		String url = "https://www.europapress.es/deportes/";
+		String url = obtenerUrl("deportes", 2);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -127,12 +132,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia1Nacional() {
-		String url = "https://www.rtve.es/noticias/";
+		String url = obtenerUrl("nacional", 0);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -146,12 +152,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia2Nacional() {
-		String url = "https://elpais.com";
+		String url = obtenerUrl("nacional", 1);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -165,12 +172,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia3Nacional() {
-		String url = "https://www.larazon.es";
+		String url = obtenerUrl("nacional", 2);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -184,12 +192,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia1Internacional() {
-		String url = "https://www.epochtimes.es/c-internacional?gad_source=1&gad_campaignid=23148586261&gclid=Cj0KCQiA_8TJBhDNARIsAPX5qxR6tzzBv1-5GtNVkJHzoym_GmCZJZNazocvnJfbL-vpbA3PA4t2rhcaAl34EALw_wcB";
+		String url = obtenerUrl("internacional", 0);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -203,12 +212,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia2Internacional() {
-		String url = "https://www.bbc.com/mundo";
+		String url = obtenerUrl("internacional", 1);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -222,12 +232,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia3Internacional() {
-		String url = "https://www.europapress.es/internacional/";
+		String url = obtenerUrl("internacional", 2);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -241,12 +252,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia1Videojuegos() {
-		String url = "https://www.xataka.com/categoria/videojuegos";
+		String url = obtenerUrl("videojuegos", 0);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -260,12 +272,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia2Videojuegos() {
-		String url = "https://vandal.elespanol.com/noticias/videojuegos";
+		String url = obtenerUrl("videojuegos", 1);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -279,12 +292,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia3Videojuegos() {
-		String url = "https://www.eltiempo.com/noticias/videojuegos";
+		String url = obtenerUrl("videojuegos", 2);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -298,12 +312,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia1Politica() {
-		String url = "https://www.publico.es/politica";
+		String url = obtenerUrl("politica", 0);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -317,12 +332,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia2Politica() {
-		String url = "https://theobjective.com/espana/politica/";
+		String url = obtenerUrl("politica", 1);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -336,12 +352,13 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
 
 	public static String noticia3Politica() {
-		String url = "https://www.lavanguardia.com/politica";
+		String url = obtenerUrl("politica", 2);
 
 		try {
 			Document doc = Jsoup.connect(url).get();
@@ -355,6 +372,7 @@ public class BuscarNoticias {
 			}
 
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al consultar la informacion en " +url, "Error", 0);
 			return null;
 		}
 	}
@@ -385,30 +403,24 @@ public class BuscarNoticias {
 			return;
 		} else {
 			String nombre = usuario.getNombreUsuario();
-			File configUsuariosTXT = new File("datos/" + "config" + nombre + ".txt");
-			try {
-				configUsuariosTXT.createNewFile();
-				try (FileWriter fw = new FileWriter(configUsuariosTXT)) {
-					int contador = 0;
-					for (String noticia : noticias) {
-						if (contador == 0) {
-							fw.write(noticia);
-						} else {
-							fw.write("\n" + noticia);
-						}
-						contador++;
-					}
-				} catch (Exception e) {
+			File configUsuariosTXT = new File("datos/configuracion.txt");
+			
+			try (FileWriter fw = new FileWriter(configUsuariosTXT, true)) {
+				fw.write("\n" +nombre);
+				for (String noticia : noticias) {
+						fw.write(";" + noticia);
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "No se ha podido escribir en el archivo de configuración", "Error", 0);
+				System.exit(0);
 			}
+			
 			GestionUsuarios.loguearse(usuario);
 		}
 	}
 
 	public static boolean comprobarConfiguracion(String categoria, String nombre) {
-		File configUsuariosTXT = new File("datos/" + "config" + nombre + ".txt");
+		File configUsuariosTXT = new File("datos/configuracion.txt");
 		try (BufferedReader br = new BufferedReader(new FileReader(configUsuariosTXT))) {
 			String linea;
 			while ((linea = br.readLine()) != null) {
@@ -416,13 +428,21 @@ public class BuscarNoticias {
 				if (linea.trim().isEmpty()) {
 					continue;
 				}
-
-				if (linea.trim().equals(categoria)) {
-					return true;
+				
+				String[] datos = linea.split(";");
+				
+				if (datos[0].trim().equals(nombre)) {
+					for(int i = 1; i < datos.length; i++) {
+						if(datos[i].equals(categoria)) {
+							return true;
+						}
+					}
 				}
 			}
 			return false;
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "No se a podido leer el archivo de configración", "Error", 0);
+			System.exit(0);
 			return false;
 		}
 	}
@@ -432,22 +452,54 @@ public class BuscarNoticias {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate hoy = LocalDate.now();
 		String fecha = hoy.format(formato);
-		File archivoGuardar = new File("datos/noticias" + fecha + nombre + ".txt");
+		File archivoGuardar = new File("datos/historico.txt");
 		try {
 			if (!archivoGuardar.exists()) {
 				archivoGuardar.createNewFile();
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoGuardar))) {
-					bw.write(EnviarNoticias.guardarNoticiasUsuario(usuario));
+					bw.write("Dia: "+fecha +" -- "+ nombre+"\n"  +EnviarNoticias.guardarNoticiasUsuario(usuario));
 				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, "No se ha podido escribir en "+archivoGuardar, "Error", 0);
 					return;
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Ya se guardaron las noticias de hoy", "Confirmación", 1);
-				return;
+				try (FileWriter fw = new FileWriter(archivoGuardar, true)) {
+					fw.write("Dia: "+fecha +" -- "+ nombre+"\n"  +EnviarNoticias.guardarNoticiasUsuario(usuario));
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, "No se pudo agregar el usuario", "Error", 0);
+					return;
+				}
 			}
 		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No se ha podido crear el archivo de historico", "Error", 0);
 			return;
 		}
 		JOptionPane.showMessageDialog(null, "Noticias guardadas correctamente en " + archivoGuardar, "Confirmación", 1);
 	}
+	
+	public static String obtenerUrl(String categoria, int numeroNoticia){
+		File configUrl = new File("datos/configuracion.txt");
+		try (BufferedReader br = new BufferedReader(new FileReader(configUrl))) {
+			String linea;
+			while ((linea = br.readLine()) != null) {
+
+				if (linea.trim().isEmpty()) {
+					continue;
+				}
+				
+				String[] datos = linea.split(";");
+				
+				if (datos[0].trim().equals(categoria)) {
+					return datos[numeroNoticia + 1].trim();
+				}
+			}
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "No se a podido leer el archivo de configración", "Error", 0);
+			System.exit(0);
+		}
+		
+		return null;
+		
+	}
 }
+

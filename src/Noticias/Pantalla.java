@@ -97,13 +97,16 @@ public class Pantalla extends JFrame {
 					int minutos = locaDate.getMinute();
 					if(hora == horaAutomatica && minutos == 0) {
 						GestionUsuarios.enviarCorreoTodosUsuarios();
+						JOptionPane.showMessageDialog(null, "Se enviaron los correos automaticos", "Confirmación", 1);
 					}
 					
 					Thread.sleep(60000);
 				}catch(InterruptedException e) {
+					JOptionPane.showMessageDialog(null, "Se ha interrumpido la hora automatica", "Error", 0);
 					break;
 				}catch (Exception e) {
-					
+					JOptionPane.showMessageDialog(null, "Error", "Error", 0);
+					break;
 				}
 			}
 		});

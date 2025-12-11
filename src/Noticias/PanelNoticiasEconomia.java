@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
@@ -25,6 +26,7 @@ public class PanelNoticiasEconomia extends JPanel {
 	private JLabel labelRol;
 	private ImageIcon imagenPerfil;
 	private JPanel panelSalirYAcerca;
+	private JButton botonCerrarAplicacion;
 	private JButton botonCerrarSesion;
 	private JTextArea textoAcercaDe;
 	private JSeparator separador;
@@ -81,15 +83,27 @@ public class PanelNoticiasEconomia extends JPanel {
 		// Botón de foto de perfil, para cerrar sesión
 
 		panelSalirYAcerca = new JPanel();
-		panelSalirYAcerca.setBounds(510, 82, 160, 75);
+		panelSalirYAcerca.setBounds(510, 82, 160, 110);
 		panelSalirYAcerca.setLayout(null);
 		panelSalirYAcerca.setBackground(Color.WHITE);
 		panelSalirYAcerca.setBorder(new LineBorder(new Color(200, 200, 200), 1));
 		add(panelSalirYAcerca);
 		panelSalirYAcerca.setVisible(false);
+		
+		botonCerrarAplicacion = new JButton("Cerrar Aplicación");
+		botonCerrarAplicacion.setBounds(1, 1, 158, 35);
+		botonCerrarAplicacion.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+		botonCerrarAplicacion.setForeground(new Color(180, 40, 40)); 
+		botonCerrarAplicacion.setBackground(Color.WHITE);
+		botonCerrarAplicacion.setBorderPainted(false);
+		botonCerrarAplicacion.setFocusPainted(false);
+		botonCerrarAplicacion.setHorizontalAlignment(SwingConstants.LEFT);
+		botonCerrarAplicacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		
+		panelSalirYAcerca.add(botonCerrarAplicacion);
 
 		botonCerrarSesion = new JButton("Cerrar sesión");
-		botonCerrarSesion.setBounds(1, 1, 158, 35);
+		botonCerrarSesion.setBounds(1, 36, 158, 35);
 		botonCerrarSesion.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		botonCerrarSesion.setForeground(new Color(45, 55, 72));
 		botonCerrarSesion.setBackground(Color.WHITE);
@@ -101,7 +115,7 @@ public class PanelNoticiasEconomia extends JPanel {
 		panelSalirYAcerca.add(botonCerrarSesion);
 
 		botonAcercaDe = new JButton("Acerca de");
-		botonAcercaDe.setBounds(1, 36, 158, 35);
+		botonAcercaDe.setBounds(1, 71, 158, 35);
 		botonAcercaDe.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		botonAcercaDe.setForeground(new Color(45, 55, 72));
 		botonAcercaDe.setBackground(Color.WHITE);
@@ -113,13 +127,13 @@ public class PanelNoticiasEconomia extends JPanel {
 		panelSalirYAcerca.add(botonAcercaDe);
 
 		separador = new JSeparator();
-		separador.setBounds(10, 75, 140, 2);
+		separador.setBounds(10, 110, 140, 2);
 		separador.setForeground(new Color(230, 230, 230));
 		separador.setVisible(false);
 		panelSalirYAcerca.add(separador);
 
 		textoAcercaDe = new JTextArea("Versión 1.0\n\nDesarrollador:\nMiguel Monteagudo");
-		textoAcercaDe.setBounds(10, 85, 140, 90);
+		textoAcercaDe.setBounds(10, 120, 140, 90);
 		textoAcercaDe.setEditable(false);
 		textoAcercaDe.setOpaque(false);
 		textoAcercaDe.setLineWrap(true);
@@ -145,11 +159,20 @@ public class PanelNoticiasEconomia extends JPanel {
 				if (estado) {
 					textoAcercaDe.setVisible(false);
 					separador.setVisible(false);
-					panelSalirYAcerca.setSize(160, 75);
+					panelSalirYAcerca.setSize(160, 110);
 				}
 			}
 		});
-
+		
+		botonCerrarAplicacion.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					System.exit(0);
+	            }
+			}
+		});
+		
 		botonCerrarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -164,9 +187,9 @@ public class PanelNoticiasEconomia extends JPanel {
 				textoAcercaDe.setVisible(mostrar);
 				separador.setVisible(mostrar);
 				if (mostrar) {
-					panelSalirYAcerca.setSize(160, 155);
+					panelSalirYAcerca.setSize(160, 200);
 				} else {
-					panelSalirYAcerca.setSize(160, 75);
+					panelSalirYAcerca.setSize(160, 110);
 				}
 			}
 		});
@@ -197,7 +220,7 @@ public class PanelNoticiasEconomia extends JPanel {
 		webNoticia1.setBounds(10, 123, 160, 34);
 		webNoticia1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia1);
-		noticia1 = new JTextArea(BuscarNoticias.noticia1Economia());
+		noticia1 = new JTextArea("Cargando noticia...");
 		noticia1.setLineWrap(true);
 		noticia1.setEditable(false);
 		noticia1.setWrapStyleWord(true);
@@ -206,12 +229,17 @@ public class PanelNoticiasEconomia extends JPanel {
 		noticia1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		add(noticia1);
 
+		new Thread(() -> {
+			String texto = BuscarNoticias.noticia1Economia();
+			javax.swing.SwingUtilities.invokeLater(() -> noticia1.setText(texto));
+		}).start();
+
 		// 2 noticia
 		webNoticia2 = new JLabel("El País");
 		webNoticia2.setBounds(10, 245, 160, 34);
 		webNoticia2.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia2);
-		noticia2 = new JTextArea(BuscarNoticias.noticia2Economia());
+		noticia2 = new JTextArea("Cargando noticia...");
 		noticia2.setLineWrap(true);
 		noticia2.setEditable(false);
 		noticia2.setWrapStyleWord(true);
@@ -220,12 +248,17 @@ public class PanelNoticiasEconomia extends JPanel {
 		noticia2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		add(noticia2);
 
+		new Thread(() -> {
+			String texto = BuscarNoticias.noticia2Economia();
+			javax.swing.SwingUtilities.invokeLater(() -> noticia2.setText(texto));
+		}).start();
+
 		// 3 noticia
 		webNoticia3 = new JLabel("La Razon");
 		webNoticia3.setBounds(10, 356, 160, 34);
 		webNoticia3.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia3);
-		noticia3 = new JTextArea(BuscarNoticias.noticia3Economia());
+		noticia3 = new JTextArea("Cargando noticia...");
 		noticia3.setLineWrap(true);
 		noticia3.setEditable(false);
 		noticia3.setWrapStyleWord(true);
@@ -233,6 +266,11 @@ public class PanelNoticiasEconomia extends JPanel {
 		noticia3.setOpaque(false);
 		noticia3.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		add(noticia3);
+
+		new Thread(() -> {
+			String texto = BuscarNoticias.noticia3Economia();
+			javax.swing.SwingUtilities.invokeLater(() -> noticia3.setText(texto));
+		}).start();
 
 	}
 

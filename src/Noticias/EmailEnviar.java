@@ -19,8 +19,6 @@ public class EmailEnviar {
 	static Session session;
 
 	public static void datos() {
-		final String fromEmail = "miguel.monteagudo.dosa@gmail.com";
-		final String password = "oujt qvgn momv kxpt";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -30,7 +28,7 @@ public class EmailEnviar {
 		props.put("mail.smtp.port", "465");
 		Authenticator auth = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(fromEmail, password);
+				return new PasswordAuthentication(ObtenerDatosEmail.datosEnvio("fromEmail"), ObtenerDatosEmail.datosEnvio("passwordEmail"));
 			}
 		};
 		session = Session.getDefaultInstance(props, auth);
@@ -48,9 +46,15 @@ public class EmailEnviar {
 		LocalDateTime locaDate = LocalDateTime.now();
 		int hora = locaDate.getHour();
 		int minutos = locaDate.getMinute();
+
 		datos();
-		EmailUtil.sendEmail(session, toEmail, "NOTICIAS DAM",
+		if(minutos < 10) {
+			EmailUtil.sendEmail(session, toEmail, "NOTICIAS DAM",
+					"Noticias: " + hoy + "(" + hora + ":" + "0"+minutos + ") \n" + correoCompleto);
+		}else {
+			EmailUtil.sendEmail(session, toEmail, "NOTICIAS DAM",
 				"Noticias: " + hoy + "(" + hora + ":" + minutos + ") \n" + correoCompleto);
+		}
 	}
 
 }
