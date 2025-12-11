@@ -84,6 +84,7 @@ public class Pantalla extends JFrame {
 		contentPane.add(panelNoticiasPolitica, "NoticiasPolitica");
 		
 		comprobarHora();
+		this.setJMenuBar(BarraMenu.getBarraMenu(this));
 		
 	}
 

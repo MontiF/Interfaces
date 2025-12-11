@@ -21,7 +21,7 @@ public class PanelRecuperarPassword extends JPanel {
 	private JTextField fieldUsuario;
 	private JButton correoRecuperacion;
 	private JButton botonVolver;
-	private JLabel labelMensaje; // Para mostrar éxito o error (opcional)
+	private JLabel labelMensaje;
 
 	public PanelRecuperarPassword(Pantalla mainFrame) {
 		setLayout(null);
@@ -35,7 +35,6 @@ public class PanelRecuperarPassword extends JPanel {
 		cardPanel.setBorder(new LineBorder(new Color(220, 220, 220), 1, true));
 		add(cardPanel);
 
-		// 3. Título
 		labelTitulo = new JLabel("Recuperar Cuenta");
 		labelTitulo.setFont(new Font("Segoe UI", Font.BOLD, 26));
 		labelTitulo.setForeground(new Color(45, 55, 72));

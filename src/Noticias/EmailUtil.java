@@ -1,7 +1,5 @@
 package Noticias;
 
-import java.util.Date;
-
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;

@@ -1,8 +1,6 @@
 package Noticias;
 
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.JTextArea;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -27,11 +25,9 @@ public class PanelInicioUsuario extends JPanel {
 	private JLabel labelUsuario;
 	private JLabel labelRol;
 	private ImageIcon imagenPerfil;
-	private JPanel panelSalirYAcerca;
+	private JPanel panelSalir;
 	private JButton botonCerrarAplicacion;
 	private JButton botonCerrarSesion;
-	private JTextArea textoAcercaDe;
-	private JSeparator separador;
 
 	private JButton botonEnviarNoticias;
 	private JButton botonEconomia;
@@ -45,7 +41,6 @@ public class PanelInicioUsuario extends JPanel {
 	private Color colorFondo = new Color(237, 242, 247);
 	private Color colorTextoOscuro = new Color(45, 55, 72);
 	private Color colorAzulAccion = new Color(66, 153, 225);
-	private JButton botonAcercaDe;
 
 	public PanelInicioUsuario(Pantalla mainFrame) {
 		setLayout(null);
@@ -84,13 +79,13 @@ public class PanelInicioUsuario extends JPanel {
 
 		// Botón de foto de perfil, para cerrar sesión
 
-		panelSalirYAcerca = new JPanel();
-		panelSalirYAcerca.setBounds(510, 82, 160, 110);
-		panelSalirYAcerca.setLayout(null);
-		panelSalirYAcerca.setBackground(Color.WHITE);
-		panelSalirYAcerca.setBorder(new LineBorder(new Color(200, 200, 200), 1));
-		add(panelSalirYAcerca);
-		panelSalirYAcerca.setVisible(false);
+		panelSalir = new JPanel();
+		panelSalir.setBounds(510, 82, 160, 72);
+		panelSalir.setLayout(null);
+		panelSalir.setBackground(Color.WHITE);
+		panelSalir.setBorder(new LineBorder(new Color(200, 200, 200), 1));
+		add(panelSalir);
+		panelSalir.setVisible(false);
 		
 		botonCerrarAplicacion = new JButton("Cerrar Aplicación");
 		botonCerrarAplicacion.setBounds(1, 1, 158, 35);
@@ -102,7 +97,7 @@ public class PanelInicioUsuario extends JPanel {
 		botonCerrarAplicacion.setHorizontalAlignment(SwingConstants.LEFT);
 		botonCerrarAplicacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
-		panelSalirYAcerca.add(botonCerrarAplicacion);
+		panelSalir.add(botonCerrarAplicacion);
 
 		botonCerrarSesion = new JButton("Cerrar sesión");
 		botonCerrarSesion.setBounds(1, 36, 158, 35);
@@ -114,36 +109,11 @@ public class PanelInicioUsuario extends JPanel {
 		botonCerrarSesion.setHorizontalAlignment(SwingConstants.LEFT);
 		botonCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-		panelSalirYAcerca.add(botonCerrarSesion);
+		botonCerrarSesion.setFocusPainted(false);
+		botonCerrarSesion.setHorizontalAlignment(SwingConstants.LEFT);
+		botonCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-		botonAcercaDe = new JButton("Acerca de");
-		botonAcercaDe.setBounds(1, 71, 158, 35);
-		botonAcercaDe.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		botonAcercaDe.setForeground(new Color(45, 55, 72));
-		botonAcercaDe.setBackground(Color.WHITE);
-		botonAcercaDe.setBorderPainted(false);
-		botonAcercaDe.setFocusPainted(false);
-		botonAcercaDe.setHorizontalAlignment(SwingConstants.LEFT);
-		botonAcercaDe.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-		panelSalirYAcerca.add(botonAcercaDe);
-
-		separador = new JSeparator();
-		separador.setBounds(10, 110, 140, 2);
-		separador.setForeground(new Color(230, 230, 230));
-		separador.setVisible(false);
-		panelSalirYAcerca.add(separador);
-
-		textoAcercaDe = new JTextArea("Versión 1.0\n\nDesarrollador:\nMiguel Monteagudo");
-		textoAcercaDe.setBounds(10, 120, 140, 90);
-		textoAcercaDe.setEditable(false);
-		textoAcercaDe.setOpaque(false);
-		textoAcercaDe.setLineWrap(true);
-		textoAcercaDe.setWrapStyleWord(true);
-		textoAcercaDe.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		textoAcercaDe.setForeground(Color.GRAY);
-		textoAcercaDe.setVisible(false);
-		panelSalirYAcerca.add(textoAcercaDe);
+		panelSalir.add(botonCerrarSesion);
 
 		imagenPerfil = new ImageIcon("images/perfil.png");
 		botonPerfil = new JButton(imagenPerfil);
@@ -156,12 +126,10 @@ public class PanelInicioUsuario extends JPanel {
 		botonPerfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				boolean estado = panelSalirYAcerca.isVisible();
-				panelSalirYAcerca.setVisible(!estado);
+				boolean estado = panelSalir.isVisible();
+				panelSalir.setVisible(!estado);
 				if (estado) {
-					textoAcercaDe.setVisible(false);
-					separador.setVisible(false);
-					panelSalirYAcerca.setSize(160, 110);
+					panelSalir.setSize(160, 72);
 				}
 			}
 		});
@@ -179,20 +147,6 @@ public class PanelInicioUsuario extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainFrame.mostrarInicioSesion();
-			}
-		});
-
-		botonAcercaDe.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				boolean mostrar = !textoAcercaDe.isVisible();
-				textoAcercaDe.setVisible(mostrar);
-				separador.setVisible(mostrar);
-				if (mostrar) {
-					panelSalirYAcerca.setSize(160, 200);
-				} else {
-					panelSalirYAcerca.setSize(160, 110);
-				}
 			}
 		});
 

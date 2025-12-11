@@ -13,3 +13,5 @@ politica;https://www.publico.es/politica;https://theobjective.com/espana/politic
 hora;7
 
 Miguel;economia;deportes;nacional
+Roberto;economia
+Sebas;economia
