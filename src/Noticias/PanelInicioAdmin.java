@@ -177,7 +177,7 @@ public class PanelInicioAdmin extends JPanel {
 		});
 
 		// Hora Automatica y Datos Email
-		botonHoraAutomatica = new JButton("Consultar Hora Y Datos Email");
+		botonHoraAutomatica = new JButton("<html><center>Consultar Hora<br>Y Datos Email</center></html>");
 		botonHoraAutomatica.setBounds(470, 260, 160, 120);
 		botonHoraAutomatica.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonHoraAutomatica.setForeground(new Color(45, 55, 72));
