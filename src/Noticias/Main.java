@@ -1,12 +1,16 @@
 package Noticias;
 
 import java.awt.EventQueue;
-import java.lang.reflect.InvocationTargetException;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+
 import javax.swing.JOptionPane;
 
 public class Main {
 
 	public static void main(String[] args) {
+		boolean internet = hayInternet();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -41,6 +45,12 @@ public class Main {
 									JOptionPane.showMessageDialog(null, "Carga Fallida", "error", 0);
 									System.exit(0);
 								}
+								if (!internet) {
+									cargando.actualizarProgreso(0, "");
+									JOptionPane.showMessageDialog(null, "No hay internet, o este es demasiado lento",
+											"error", 0);
+									System.exit(0);
+								}
 
 								cargando.actualizarProgreso(100, "Finalizando carga...");
 								Thread.sleep(1000);
@@ -65,5 +75,20 @@ public class Main {
 				}
 			}
 		});
+	}
+
+	private static boolean hayInternet() {
+
+		String direccionWeb = "www.google.com";
+		int puerto = 80;
+		int tiempoEspera = 3000;
+
+		try (Socket socket = new Socket()) {
+			socket.connect(new InetSocketAddress(direccionWeb, puerto), tiempoEspera);
+			return true;
+		} catch (IOException e) {
+			return false;
+		}
+
 	}
 }
