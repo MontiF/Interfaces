@@ -18,7 +18,8 @@ public class BarraMenu {
 		itemAcercaDe.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(mainFrame, "Versión 1.0\n\nDesarrollador:\nMiguel Monteagudo", "Acerca de",1);
+				JOptionPane.showMessageDialog(mainFrame, "Versión 1.0\n\nDesarrollador:\nMiguel Monteagudo",
+						"Acerca de", 1);
 			}
 		});
 

@@ -23,13 +23,13 @@ public class GestionUsuarios {
 		}
 		return false;
 	}
-	
-	public static void enviarCorreoTodosUsuarios(){
+
+	public static void enviarCorreoTodosUsuarios() {
 		for (Usuario u : listaUsuarios) {
-			if (u.getAdmin() == true) {
-				EnviarNoticias.enviarTodasNoticias(u);
-			}else {
-				EnviarNoticias.enviarNoticiasUsuario(u);
+			if (u.getAdmin() == false) {
+				if (u.getLogueado() == true) {
+					EnviarNoticias.enviarNoticiasUsuario(u);
+				}
 			}
 		}
 	}
@@ -287,24 +287,14 @@ public class GestionUsuarios {
 			JOptionPane.showMessageDialog(null, "No se permiten los caracteres ';' o ',' en la contraseña", "Error", 0);
 			return;
 		}
-		String esAdmin = JOptionPane.showInputDialog(null, "¿Es Admin? (true/false)");
-		esAdmin.toLowerCase();
-		if (null == esAdmin) {
-			JOptionPane.showMessageDialog(null, "Se a cancelado la operación", "Error", 0);
-			return;
-		}
-		if (!esAdmin.equals("false") && !esAdmin.equals("true")) {
-			JOptionPane.showMessageDialog(null, "Debe de ser true o false", "Error", 0);
-			return;
-		}
-		agregarUsuario(nombreUsuario, correo, password, esAdmin);
+		agregarUsuario(nombreUsuario, correo, password);
 	}
 
-	private static void agregarUsuario(String nombreUsuario, String correo, String password, String esAdminBool) {
+	private static void agregarUsuario(String nombreUsuario, String correo, String password) {
 		listaUsuarios.clear();
 		File usuariosTXT = new File("datos/usuarios.txt");
 		try (FileWriter fw = new FileWriter(usuariosTXT, true)) {
-			fw.write("\n" + correo + ";" + nombreUsuario + ";" + password + ";" + esAdminBool + ";false");
+			fw.write("\n" + correo + ";" + nombreUsuario + ";" + password + ";false;false");
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "No se pudo agregar el usuario", "Error", 0);
 			return;

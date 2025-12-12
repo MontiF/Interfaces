@@ -78,17 +78,17 @@ public class PanelGestionUsuario extends JPanel {
 		panelSalir.setBorder(new LineBorder(new Color(200, 200, 200), 1));
 		add(panelSalir);
 		panelSalir.setVisible(false);
-		
+
 		botonCerrarAplicacion = new JButton("Cerrar Aplicación");
 		botonCerrarAplicacion.setBounds(1, 1, 158, 35);
 		botonCerrarAplicacion.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		botonCerrarAplicacion.setForeground(new Color(180, 40, 40)); 
+		botonCerrarAplicacion.setForeground(new Color(180, 40, 40));
 		botonCerrarAplicacion.setBackground(Color.WHITE);
 		botonCerrarAplicacion.setBorderPainted(false);
 		botonCerrarAplicacion.setFocusPainted(false);
 		botonCerrarAplicacion.setHorizontalAlignment(SwingConstants.LEFT);
 		botonCerrarAplicacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		
+
 		panelSalir.add(botonCerrarAplicacion);
 
 		botonCerrarSesion = new JButton("Cerrar sesión");
@@ -121,16 +121,17 @@ public class PanelGestionUsuario extends JPanel {
 				}
 			}
 		});
-		
-		botonCerrarAplicacion.addActionListener(new ActionListener() {	
+
+		botonCerrarAplicacion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				if (JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación",
+						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					System.exit(0);
-	            }
+				}
 			}
 		});
-		
+
 		botonCerrarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -189,7 +190,7 @@ public class PanelGestionUsuario extends JPanel {
 			}
 		});
 		add(botonVolver);
-		
+
 	}
 
 	public void setUsuario(Usuario usuario) {

@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 public class ObtenerDatosEmail {
-	public static String datosEnvio(String dato){
+	public static String datosEnvio(String dato) {
 		File configEnvio = new File("datos/configuracion.txt");
 		try (BufferedReader br = new BufferedReader(new FileReader(configEnvio))) {
 			String linea;
@@ -17,9 +17,9 @@ public class ObtenerDatosEmail {
 				if (linea.trim().isEmpty()) {
 					continue;
 				}
-				
+
 				String[] datos = linea.split(";");
-				
+
 				if (datos[0].trim().equals(dato)) {
 					return datos[1].trim();
 				}
@@ -28,8 +28,8 @@ public class ObtenerDatosEmail {
 			JOptionPane.showMessageDialog(null, "No se a podido leer el archivo de configración", "Error", 0);
 			System.exit(0);
 		}
-		
+
 		return null;
-		
+
 	}
 }

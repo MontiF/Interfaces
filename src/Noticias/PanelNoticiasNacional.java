@@ -85,17 +85,17 @@ public class PanelNoticiasNacional extends JPanel {
 		panelSalir.setBorder(new LineBorder(new Color(200, 200, 200), 1));
 		add(panelSalir);
 		panelSalir.setVisible(false);
-		
+
 		botonCerrarAplicacion = new JButton("Cerrar Aplicación");
 		botonCerrarAplicacion.setBounds(1, 1, 158, 35);
 		botonCerrarAplicacion.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		botonCerrarAplicacion.setForeground(new Color(180, 40, 40)); 
+		botonCerrarAplicacion.setForeground(new Color(180, 40, 40));
 		botonCerrarAplicacion.setBackground(Color.WHITE);
 		botonCerrarAplicacion.setBorderPainted(false);
 		botonCerrarAplicacion.setFocusPainted(false);
 		botonCerrarAplicacion.setHorizontalAlignment(SwingConstants.LEFT);
 		botonCerrarAplicacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		
+
 		panelSalir.add(botonCerrarAplicacion);
 
 		botonCerrarSesion = new JButton("Cerrar sesión");
@@ -128,16 +128,17 @@ public class PanelNoticiasNacional extends JPanel {
 				}
 			}
 		});
-		
-		botonCerrarAplicacion.addActionListener(new ActionListener() {	
+
+		botonCerrarAplicacion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				if (JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación",
+						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					System.exit(0);
-	            }
+				}
 			}
 		});
-		
+
 		botonCerrarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -171,7 +172,7 @@ public class PanelNoticiasNacional extends JPanel {
 		webNoticia1.setBounds(10, 123, 160, 34);
 		webNoticia1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia1);
-		noticia1 = new JTextArea(BuscarNoticias.noticia1Nacional());
+		noticia1 = new JTextArea("Cargando...");
 		noticia1.setLineWrap(true);
 		noticia1.setEditable(false);
 		noticia1.setWrapStyleWord(true);
@@ -185,7 +186,7 @@ public class PanelNoticiasNacional extends JPanel {
 		webNoticia2.setBounds(10, 245, 160, 34);
 		webNoticia2.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia2);
-		noticia2 = new JTextArea(BuscarNoticias.noticia2Nacional());
+		noticia2 = new JTextArea("Cargando...");
 		noticia2.setLineWrap(true);
 		noticia2.setEditable(false);
 		noticia2.setWrapStyleWord(true);
@@ -199,7 +200,7 @@ public class PanelNoticiasNacional extends JPanel {
 		webNoticia3.setBounds(10, 356, 160, 34);
 		webNoticia3.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		add(webNoticia3);
-		noticia3 = new JTextArea(BuscarNoticias.noticia3Nacional());
+		noticia3 = new JTextArea("Cargando...");
 		noticia3.setLineWrap(true);
 		noticia3.setEditable(false);
 		noticia3.setWrapStyleWord(true);
@@ -222,5 +223,11 @@ public class PanelNoticiasNacional extends JPanel {
 			}
 		}
 
+	}
+
+	public void cargarNoticias() {
+		noticia1.setText(BuscarNoticias.noticia1Nacional());
+		noticia2.setText(BuscarNoticias.noticia2Nacional());
+		noticia3.setText(BuscarNoticias.noticia3Nacional());
 	}
 }

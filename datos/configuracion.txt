@@ -15,3 +15,4 @@ hora;7
 Miguel;economia;deportes;nacional
 Roberto;economia
 Sebas;economia
+a;economia;deportes

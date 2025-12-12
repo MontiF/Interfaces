@@ -11,7 +11,6 @@ public class Main {
 			public void run() {
 				try {
 					PantallaCarga cargando = new PantallaCarga();
-					cargando.setVisible(true);
 
 					new Thread(new Runnable() {
 
@@ -19,6 +18,8 @@ public class Main {
 
 						@Override
 						public void run() {
+							window = new Pantalla();
+							cargando.setVisible(true);
 							try {
 								cargando.actualizarProgreso(20, "Iniciando sistema...");
 								Thread.sleep(1000);
@@ -29,26 +30,13 @@ public class Main {
 								cargando.actualizarProgreso(60, "Verificando conexión...");
 								Thread.sleep(1000);
 
-								// cargar todo, segundo 4
 								cargando.actualizarProgreso(80, "Comprobando usuarios y generando interfaz...");
 
 								boolean usuariosOk = GestionUsuarios.inicializarUsuarios();
 
-								if (usuariosOk) {
-									try {
-										EventQueue.invokeAndWait(new Runnable() {
-											public void run() {
-												window = new Pantalla();
-											}
-										});
-									} catch (InvocationTargetException | InterruptedException e) {
-										JOptionPane.showMessageDialog(null, "Error al crear la pantalla principal:", "Error Crítico", 0);
-									}
-								}
-
 								Thread.sleep(1000);
 
-								if (!usuariosOk) {
+								if (!usuariosOk || window == null) {
 									cargando.actualizarProgreso(0, "");
 									JOptionPane.showMessageDialog(null, "Carga Fallida", "error", 0);
 									System.exit(0);
@@ -62,9 +50,7 @@ public class Main {
 										cargando.setVisible(false);
 										cargando.dispose();
 
-										if (window != null) {
-											window.setVisible(true);
-										}
+										window.setVisible(true);
 									}
 								});
 

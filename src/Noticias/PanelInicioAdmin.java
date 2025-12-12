@@ -80,17 +80,17 @@ public class PanelInicioAdmin extends JPanel {
 		panelSalir.setBorder(new LineBorder(new Color(200, 200, 200), 1));
 		add(panelSalir);
 		panelSalir.setVisible(false);
-		
+
 		botonCerrarAplicacion = new JButton("Cerrar Aplicación");
 		botonCerrarAplicacion.setBounds(1, 1, 158, 35);
 		botonCerrarAplicacion.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		botonCerrarAplicacion.setForeground(new Color(180, 40, 40)); 
+		botonCerrarAplicacion.setForeground(new Color(180, 40, 40));
 		botonCerrarAplicacion.setBackground(Color.WHITE);
 		botonCerrarAplicacion.setBorderPainted(false);
 		botonCerrarAplicacion.setFocusPainted(false);
 		botonCerrarAplicacion.setHorizontalAlignment(SwingConstants.LEFT);
 		botonCerrarAplicacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		
+
 		panelSalir.add(botonCerrarAplicacion);
 
 		botonCerrarSesion = new JButton("Cerrar sesión");
@@ -123,16 +123,17 @@ public class PanelInicioAdmin extends JPanel {
 				}
 			}
 		});
-		
-		botonCerrarAplicacion.addActionListener(new ActionListener() {	
+
+		botonCerrarAplicacion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				if (JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación",
+						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					System.exit(0);
-	            }
+				}
 			}
 		});
-		
+
 		botonCerrarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -175,8 +176,8 @@ public class PanelInicioAdmin extends JPanel {
 			}
 		});
 
-		// Hora Automatica
-		botonHoraAutomatica = new JButton("Consultar Hora");
+		// Hora Automatica y Datos Email
+		botonHoraAutomatica = new JButton("Consultar Hora Y Datos Email");
 		botonHoraAutomatica.setBounds(470, 260, 160, 120);
 		botonHoraAutomatica.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonHoraAutomatica.setForeground(new Color(45, 55, 72));
@@ -188,7 +189,10 @@ public class PanelInicioAdmin extends JPanel {
 		botonHoraAutomatica.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, HoraAutomatica.leerHora() +":00", "Hora Automatica", 1);
+				JOptionPane.showMessageDialog(null, HoraAutomatica.leerHora() + ":00", "Hora Automatica", 1);
+				JOptionPane.showMessageDialog(null, ObtenerDatosEmail.datosEnvio("noReply") + "\n"
+						+ ObtenerDatosEmail.datosEnvio("de") + "\n" + ObtenerDatosEmail.datosEnvio("fromEmail"),
+						"Datos email", 1);
 			}
 		});
 

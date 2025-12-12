@@ -32,17 +32,18 @@ public class Pantalla extends JFrame {
 	private PanelNoticiasPolitica panelNoticiasPolitica;
 
 	public Pantalla() {
-		
+
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-                if(JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                    System.exit(0);
-                }
+				if (JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?", "Confirmación",
+						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					System.exit(0);
+				}
 			}
 		});
-		
+
 		ImageIcon icono = new ImageIcon("images/logo.png");
 		setIconImage(icono.getImage());
 		setTitle("Noticias");
@@ -82,30 +83,30 @@ public class Pantalla extends JFrame {
 		contentPane.add(panelNoticiasInternacional, "NoticiasInternacional");
 		contentPane.add(panelNoticiasVideojuegos, "NoticiasVideojuegos");
 		contentPane.add(panelNoticiasPolitica, "NoticiasPolitica");
-		
+
 		comprobarHora();
 		this.setJMenuBar(BarraMenu.getBarraMenu(this));
-		
+
 	}
 
 	private void comprobarHora() {
 		Thread hilo = new Thread(() -> {
-			while(true) {
-				try {	
+			while (true) {
+				try {
 					int horaAutomatica = Integer.parseInt(HoraAutomatica.leerHora());
 					LocalDateTime locaDate = LocalDateTime.now();
 					int hora = locaDate.getHour();
 					int minutos = locaDate.getMinute();
-					if(hora == horaAutomatica && minutos == 0) {
+					if (hora == horaAutomatica && minutos == 0) {
 						GestionUsuarios.enviarCorreoTodosUsuarios();
 						JOptionPane.showMessageDialog(null, "Se enviaron los correos automaticos", "Confirmación", 1);
 					}
-					
+
 					Thread.sleep(60000);
-				}catch(InterruptedException e) {
+				} catch (InterruptedException e) {
 					JOptionPane.showMessageDialog(null, "Se ha interrumpido la hora automatica", "Error", 0);
 					break;
-				}catch (Exception e) {
+				} catch (Exception e) {
 					JOptionPane.showMessageDialog(null, "Error", "Error", 0);
 					break;
 				}
@@ -149,32 +150,38 @@ public class Pantalla extends JFrame {
 	}
 
 	public void mostrarPanelNoticiasEconomia(Usuario usuario) {
+		panelNoticiasEconomia.cargarNoticias();
 		panelNoticiasEconomia.setUsuario(usuario);
 		cardLayout.show(contentPane, "NoticiasEconomia");
 
 	}
 
 	public void mostrarPanelNoticiasDeportes(Usuario usuario) {
+		panelNoticiasDeportes.cargarNoticias();
 		panelNoticiasDeportes.setUsuario(usuario);
 		cardLayout.show(contentPane, "NoticiasDeportes");
 	}
 
 	public void mostrarPanelNoticiasNacional(Usuario usuario) {
+		panelNoticiasNacional.cargarNoticias();
 		panelNoticiasNacional.setUsuario(usuario);
 		cardLayout.show(contentPane, "NoticiasNacional");
 	}
 
 	public void mostrarPanelNoticiasInteracional(Usuario usuario) {
+		panelNoticiasInternacional.cargarNoticias();
 		panelNoticiasInternacional.setUsuario(usuario);
 		cardLayout.show(contentPane, "NoticiasInternacional");
 	}
 
 	public void mostrarPanelNoticiasVideojuegos(Usuario usuario) {
+		panelNoticiasVideojuegos.cargarNoticias();
 		panelNoticiasVideojuegos.setUsuario(usuario);
 		cardLayout.show(contentPane, "NoticiasVideojuegos");
 	}
 
 	public void mostrarPanelNoticiasPolitica(Usuario usuario) {
+		panelNoticiasPolitica.cargarNoticias();
 		panelNoticiasPolitica.setUsuario(usuario);
 		cardLayout.show(contentPane, "NoticiasPolitica");
 	}

@@ -15,18 +15,18 @@ public class HoraAutomatica {
 			String linea;
 
 			while ((linea = br.readLine()) != null) {
-				
+
 				if (linea.trim().isEmpty()) {
 					continue;
 				}
-				
+
 				String[] datos = linea.split(";");
-				
-				if(datos[0].trim().equals("hora")) {
+
+				if (datos[0].trim().equals("hora")) {
 					String hora = datos[1].trim();
 					return hora;
 				}
-				
+
 			}
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "No se ha podido comprobar la hora automatica", "Error", 0);
